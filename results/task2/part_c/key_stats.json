@@ -1,0 +1,1364 @@
+{
+ "meta": {
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "torch": "2.11.0+cu130",
+  "device": "Tesla T4",
+  "n_layers": 28,
+  "h_kv": 2,
+  "d_h": 128,
+  "group": 64,
+  "sink": 8,
+  "recent": 64,
+  "pool_kernel": 7,
+  "max_new_tokens": 12,
+  "attention_backend": "sdpa",
+  "dtype": "fp16"
+ },
+ "rows": [
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 0,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 74.02764892578125,
+   "tokenwise_group_range_over_median_abs": 395.34417724609375,
+   "channelwise_group_range_over_median_abs": 4.072974681854248
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 0,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 4.490556716918945,
+   "tokenwise_group_range_over_median_abs": 13.634703636169434,
+   "channelwise_group_range_over_median_abs": 7.422133922576904
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 1,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 19.06204605102539,
+   "tokenwise_group_range_over_median_abs": 29.32528305053711,
+   "channelwise_group_range_over_median_abs": 3.994544506072998
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 1,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.008681535720825,
+   "tokenwise_group_range_over_median_abs": 10.27952766418457,
+   "channelwise_group_range_over_median_abs": 6.066666603088379
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 2,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 6.598168849945068,
+   "tokenwise_group_range_over_median_abs": 18.208955764770508,
+   "channelwise_group_range_over_median_abs": 4.518518447875977
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 2,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.234304189682007,
+   "tokenwise_group_range_over_median_abs": 8.426666259765625,
+   "channelwise_group_range_over_median_abs": 6.252945899963379
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 3,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.717026710510254,
+   "tokenwise_group_range_over_median_abs": 14.50733757019043,
+   "channelwise_group_range_over_median_abs": 4.676425933837891
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 3,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.3817038536071777,
+   "tokenwise_group_range_over_median_abs": 8.745198249816895,
+   "channelwise_group_range_over_median_abs": 6.032536029815674
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 4,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.359592437744141,
+   "tokenwise_group_range_over_median_abs": 13.333333015441895,
+   "channelwise_group_range_over_median_abs": 4.708074569702148
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 4,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.7060484886169434,
+   "tokenwise_group_range_over_median_abs": 8.199505805969238,
+   "channelwise_group_range_over_median_abs": 6.212712287902832
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 5,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.6561367511749268,
+   "tokenwise_group_range_over_median_abs": 10.494308471679688,
+   "channelwise_group_range_over_median_abs": 4.5714287757873535
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 5,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.3475613594055176,
+   "tokenwise_group_range_over_median_abs": 9.969561576843262,
+   "channelwise_group_range_over_median_abs": 5.794960975646973
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 6,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.138061046600342,
+   "tokenwise_group_range_over_median_abs": 11.411486625671387,
+   "channelwise_group_range_over_median_abs": 4.837792873382568
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 6,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.964240074157715,
+   "tokenwise_group_range_over_median_abs": 11.19788932800293,
+   "channelwise_group_range_over_median_abs": 5.632311820983887
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 7,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 7.839973449707031,
+   "tokenwise_group_range_over_median_abs": 15.579737663269043,
+   "channelwise_group_range_over_median_abs": 3.9892544746398926
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 7,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.756293296813965,
+   "tokenwise_group_range_over_median_abs": 10.331012725830078,
+   "channelwise_group_range_over_median_abs": 5.970749378204346
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 8,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.4895801544189453,
+   "tokenwise_group_range_over_median_abs": 9.716418266296387,
+   "channelwise_group_range_over_median_abs": 4.037278652191162
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 8,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.8986382484436035,
+   "tokenwise_group_range_over_median_abs": 9.629920959472656,
+   "channelwise_group_range_over_median_abs": 5.654755592346191
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 9,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.632444381713867,
+   "tokenwise_group_range_over_median_abs": 13.69084644317627,
+   "channelwise_group_range_over_median_abs": 4.851016998291016
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 9,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.785374164581299,
+   "tokenwise_group_range_over_median_abs": 9.727140426635742,
+   "channelwise_group_range_over_median_abs": 5.817211627960205
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 10,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.63259744644165,
+   "tokenwise_group_range_over_median_abs": 12.78150463104248,
+   "channelwise_group_range_over_median_abs": 4.352874755859375
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 10,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.5914385318756104,
+   "tokenwise_group_range_over_median_abs": 8.5296049118042,
+   "channelwise_group_range_over_median_abs": 5.938530921936035
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 11,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.466127395629883,
+   "tokenwise_group_range_over_median_abs": 13.420880317687988,
+   "channelwise_group_range_over_median_abs": 4.624096393585205
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 11,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.016494035720825,
+   "tokenwise_group_range_over_median_abs": 9.814736366271973,
+   "channelwise_group_range_over_median_abs": 5.652729511260986
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 12,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.2400131225585938,
+   "tokenwise_group_range_over_median_abs": 10.5600004196167,
+   "channelwise_group_range_over_median_abs": 4.376996994018555
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 12,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.559755563735962,
+   "tokenwise_group_range_over_median_abs": 9.266318321228027,
+   "channelwise_group_range_over_median_abs": 5.778231143951416
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 13,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 2.98891019821167,
+   "tokenwise_group_range_over_median_abs": 10.16120433807373,
+   "channelwise_group_range_over_median_abs": 4.3057122230529785
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 13,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.4914164543151855,
+   "tokenwise_group_range_over_median_abs": 9.896964073181152,
+   "channelwise_group_range_over_median_abs": 6.181818008422852
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 14,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.787031173706055,
+   "tokenwise_group_range_over_median_abs": 14.732518196105957,
+   "channelwise_group_range_over_median_abs": 4.384133815765381
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 14,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.669196844100952,
+   "tokenwise_group_range_over_median_abs": 10.623779296875,
+   "channelwise_group_range_over_median_abs": 6.164783954620361
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 15,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 9.74933910369873,
+   "tokenwise_group_range_over_median_abs": 32.6575927734375,
+   "channelwise_group_range_over_median_abs": 4.261390686035156
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 15,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.04544734954834,
+   "tokenwise_group_range_over_median_abs": 8.247191429138184,
+   "channelwise_group_range_over_median_abs": 6.134649753570557
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 16,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.713785409927368,
+   "tokenwise_group_range_over_median_abs": 13.544798851013184,
+   "channelwise_group_range_over_median_abs": 4.3119120597839355
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 16,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.2041313648223877,
+   "tokenwise_group_range_over_median_abs": 9.126603126525879,
+   "channelwise_group_range_over_median_abs": 5.770257472991943
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 17,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.154415130615234,
+   "tokenwise_group_range_over_median_abs": 14.023923873901367,
+   "channelwise_group_range_over_median_abs": 4.390804767608643
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 17,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.060225248336792,
+   "tokenwise_group_range_over_median_abs": 8.215154647827148,
+   "channelwise_group_range_over_median_abs": 6.2134833335876465
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 18,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.96384334564209,
+   "tokenwise_group_range_over_median_abs": 14.467757225036621,
+   "channelwise_group_range_over_median_abs": 4.324898719787598
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 18,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.2687697410583496,
+   "tokenwise_group_range_over_median_abs": 9.249815940856934,
+   "channelwise_group_range_over_median_abs": 5.872776031494141
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 19,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.9573822021484375,
+   "tokenwise_group_range_over_median_abs": 13.351749420166016,
+   "channelwise_group_range_over_median_abs": 4.099148750305176
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 19,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.4240596294403076,
+   "tokenwise_group_range_over_median_abs": 8.669330596923828,
+   "channelwise_group_range_over_median_abs": 5.975259780883789
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 20,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.073856353759766,
+   "tokenwise_group_range_over_median_abs": 13.155457496643066,
+   "channelwise_group_range_over_median_abs": 4.423980236053467
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 20,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.0000813007354736,
+   "tokenwise_group_range_over_median_abs": 7.517745494842529,
+   "channelwise_group_range_over_median_abs": 6.294881820678711
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 21,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.8689074516296387,
+   "tokenwise_group_range_over_median_abs": 13.147468566894531,
+   "channelwise_group_range_over_median_abs": 4.644262313842773
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 21,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.3516898155212402,
+   "tokenwise_group_range_over_median_abs": 8.728947639465332,
+   "channelwise_group_range_over_median_abs": 6.001022815704346
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 22,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.896726608276367,
+   "tokenwise_group_range_over_median_abs": 13.693761825561523,
+   "channelwise_group_range_over_median_abs": 4.859504222869873
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 22,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.9470001459121704,
+   "tokenwise_group_range_over_median_abs": 7.38083028793335,
+   "channelwise_group_range_over_median_abs": 7.0177154541015625
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 23,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.418155670166016,
+   "tokenwise_group_range_over_median_abs": 13.831809997558594,
+   "channelwise_group_range_over_median_abs": 4.589136600494385
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 23,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.138749122619629,
+   "tokenwise_group_range_over_median_abs": 8.001493453979492,
+   "channelwise_group_range_over_median_abs": 7.061563968658447
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 24,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.622533082962036,
+   "tokenwise_group_range_over_median_abs": 13.783673286437988,
+   "channelwise_group_range_over_median_abs": 5.001543045043945
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 24,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.2438247203826904,
+   "tokenwise_group_range_over_median_abs": 8.915014266967773,
+   "channelwise_group_range_over_median_abs": 7.448334693908691
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 25,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.090512275695801,
+   "tokenwise_group_range_over_median_abs": 15.315427780151367,
+   "channelwise_group_range_over_median_abs": 5.08864688873291
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 25,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.5716807842254639,
+   "tokenwise_group_range_over_median_abs": 7.689507484436035,
+   "channelwise_group_range_over_median_abs": 7.788960933685303
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 26,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.5499038696289062,
+   "tokenwise_group_range_over_median_abs": 17.24950408935547,
+   "channelwise_group_range_over_median_abs": 5.103937149047852
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 26,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.763527512550354,
+   "tokenwise_group_range_over_median_abs": 7.376201152801514,
+   "channelwise_group_range_over_median_abs": 8.683307647705078
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 27,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.0255584716796875,
+   "tokenwise_group_range_over_median_abs": 14.625205039978027,
+   "channelwise_group_range_over_median_abs": 4.878787994384766
+  },
+  {
+   "case": "KV-2048-start-0-00",
+   "layer": 27,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.7483762502670288,
+   "tokenwise_group_range_over_median_abs": 7.682403564453125,
+   "channelwise_group_range_over_median_abs": 9.474418640136719
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 0,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 73.69912719726562,
+   "tokenwise_group_range_over_median_abs": 394.8599548339844,
+   "channelwise_group_range_over_median_abs": 4.072056293487549
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 0,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 4.490556716918945,
+   "tokenwise_group_range_over_median_abs": 13.634703636169434,
+   "channelwise_group_range_over_median_abs": 7.449319362640381
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 1,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 18.941335678100586,
+   "tokenwise_group_range_over_median_abs": 29.32528305053711,
+   "channelwise_group_range_over_median_abs": 3.970747470855713
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 1,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.0197505950927734,
+   "tokenwise_group_range_over_median_abs": 10.263999938964844,
+   "channelwise_group_range_over_median_abs": 6.097382068634033
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 2,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 6.5375189781188965,
+   "tokenwise_group_range_over_median_abs": 18.29911994934082,
+   "channelwise_group_range_over_median_abs": 4.558854579925537
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 2,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.2273709774017334,
+   "tokenwise_group_range_over_median_abs": 8.410569190979004,
+   "channelwise_group_range_over_median_abs": 6.248581886291504
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 3,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.721129417419434,
+   "tokenwise_group_range_over_median_abs": 14.469459533691406,
+   "channelwise_group_range_over_median_abs": 4.7074689865112305
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 3,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.4064459800720215,
+   "tokenwise_group_range_over_median_abs": 8.725000381469727,
+   "channelwise_group_range_over_median_abs": 6.034398078918457
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 4,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.347245216369629,
+   "tokenwise_group_range_over_median_abs": 13.311582565307617,
+   "channelwise_group_range_over_median_abs": 4.727662086486816
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 4,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.6843578815460205,
+   "tokenwise_group_range_over_median_abs": 8.204734802246094,
+   "channelwise_group_range_over_median_abs": 6.195578098297119
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 5,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.657829523086548,
+   "tokenwise_group_range_over_median_abs": 10.527442932128906,
+   "channelwise_group_range_over_median_abs": 4.584710597991943
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 5,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.441952705383301,
+   "tokenwise_group_range_over_median_abs": 9.947368621826172,
+   "channelwise_group_range_over_median_abs": 5.789895534515381
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 6,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.1694300174713135,
+   "tokenwise_group_range_over_median_abs": 11.455048561096191,
+   "channelwise_group_range_over_median_abs": 4.847457408905029
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 6,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.837038516998291,
+   "tokenwise_group_range_over_median_abs": 11.1582612991333,
+   "channelwise_group_range_over_median_abs": 5.635416507720947
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 7,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 7.87762451171875,
+   "tokenwise_group_range_over_median_abs": 15.624772071838379,
+   "channelwise_group_range_over_median_abs": 3.9896819591522217
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 7,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.780907392501831,
+   "tokenwise_group_range_over_median_abs": 10.364026069641113,
+   "channelwise_group_range_over_median_abs": 5.979409694671631
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 8,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.475221633911133,
+   "tokenwise_group_range_over_median_abs": 9.676392555236816,
+   "channelwise_group_range_over_median_abs": 4.0466814041137695
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 8,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.9348831176757812,
+   "tokenwise_group_range_over_median_abs": 9.562716484069824,
+   "channelwise_group_range_over_median_abs": 5.656473636627197
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 9,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.6262664794921875,
+   "tokenwise_group_range_over_median_abs": 13.68559455871582,
+   "channelwise_group_range_over_median_abs": 4.879406452178955
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 9,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.6689040660858154,
+   "tokenwise_group_range_over_median_abs": 9.721039772033691,
+   "channelwise_group_range_over_median_abs": 5.7834672927856445
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 10,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.700469970703125,
+   "tokenwise_group_range_over_median_abs": 12.782831192016602,
+   "channelwise_group_range_over_median_abs": 4.379377365112305
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 10,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.4566264152526855,
+   "tokenwise_group_range_over_median_abs": 8.5704345703125,
+   "channelwise_group_range_over_median_abs": 5.936993598937988
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 11,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.573652267456055,
+   "tokenwise_group_range_over_median_abs": 13.396204948425293,
+   "channelwise_group_range_over_median_abs": 4.618167400360107
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 11,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.955904960632324,
+   "tokenwise_group_range_over_median_abs": 9.78687572479248,
+   "channelwise_group_range_over_median_abs": 5.6507062911987305
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 12,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.2637276649475098,
+   "tokenwise_group_range_over_median_abs": 10.5191011428833,
+   "channelwise_group_range_over_median_abs": 4.373239517211914
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 12,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.587233066558838,
+   "tokenwise_group_range_over_median_abs": 9.234347343444824,
+   "channelwise_group_range_over_median_abs": 5.794919967651367
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 13,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 2.9921746253967285,
+   "tokenwise_group_range_over_median_abs": 10.185566902160645,
+   "channelwise_group_range_over_median_abs": 4.303769588470459
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 13,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.423821449279785,
+   "tokenwise_group_range_over_median_abs": 9.914595603942871,
+   "channelwise_group_range_over_median_abs": 6.197712421417236
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 14,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.662898063659668,
+   "tokenwise_group_range_over_median_abs": 14.635342597961426,
+   "channelwise_group_range_over_median_abs": 4.392089366912842
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 14,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.6899209022521973,
+   "tokenwise_group_range_over_median_abs": 10.526190757751465,
+   "channelwise_group_range_over_median_abs": 6.190428733825684
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 15,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 9.616289138793945,
+   "tokenwise_group_range_over_median_abs": 35.957244873046875,
+   "channelwise_group_range_over_median_abs": 4.266293048858643
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 15,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.953214168548584,
+   "tokenwise_group_range_over_median_abs": 8.228938102722168,
+   "channelwise_group_range_over_median_abs": 6.155417442321777
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 16,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.631310224533081,
+   "tokenwise_group_range_over_median_abs": 13.36986255645752,
+   "channelwise_group_range_over_median_abs": 4.294654369354248
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 16,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.179321765899658,
+   "tokenwise_group_range_over_median_abs": 9.024744987487793,
+   "channelwise_group_range_over_median_abs": 5.83787202835083
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 17,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.220477104187012,
+   "tokenwise_group_range_over_median_abs": 14.026058197021484,
+   "channelwise_group_range_over_median_abs": 4.427107810974121
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 17,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.0590109825134277,
+   "tokenwise_group_range_over_median_abs": 8.188679695129395,
+   "channelwise_group_range_over_median_abs": 6.2686567306518555
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 18,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.910724639892578,
+   "tokenwise_group_range_over_median_abs": 14.430797576904297,
+   "channelwise_group_range_over_median_abs": 4.321264266967773
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 18,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.2419869899749756,
+   "tokenwise_group_range_over_median_abs": 9.241379737854004,
+   "channelwise_group_range_over_median_abs": 5.8969221115112305
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 19,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.9708452224731445,
+   "tokenwise_group_range_over_median_abs": 13.368807792663574,
+   "channelwise_group_range_over_median_abs": 4.099518299102783
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 19,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.4208860397338867,
+   "tokenwise_group_range_over_median_abs": 8.657307624816895,
+   "channelwise_group_range_over_median_abs": 6.026556015014648
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 20,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.137589931488037,
+   "tokenwise_group_range_over_median_abs": 13.181049346923828,
+   "channelwise_group_range_over_median_abs": 4.467353820800781
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 20,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.9969946146011353,
+   "tokenwise_group_range_over_median_abs": 7.4980692863464355,
+   "channelwise_group_range_over_median_abs": 6.289405822753906
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 21,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.8630006313323975,
+   "tokenwise_group_range_over_median_abs": 13.176777839660645,
+   "channelwise_group_range_over_median_abs": 4.619182109832764
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 21,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.405277729034424,
+   "tokenwise_group_range_over_median_abs": 8.586699485778809,
+   "channelwise_group_range_over_median_abs": 5.97573184967041
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 22,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.9257373809814453,
+   "tokenwise_group_range_over_median_abs": 13.72191333770752,
+   "channelwise_group_range_over_median_abs": 4.869764804840088
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 22,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.9303081035614014,
+   "tokenwise_group_range_over_median_abs": 7.400503635406494,
+   "channelwise_group_range_over_median_abs": 7.021176338195801
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 23,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.570501327514648,
+   "tokenwise_group_range_over_median_abs": 13.921930313110352,
+   "channelwise_group_range_over_median_abs": 4.580124378204346
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 23,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.119748592376709,
+   "tokenwise_group_range_over_median_abs": 8.041504859924316,
+   "channelwise_group_range_over_median_abs": 7.07114315032959
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 24,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.6171483993530273,
+   "tokenwise_group_range_over_median_abs": 13.732115745544434,
+   "channelwise_group_range_over_median_abs": 4.938271522521973
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 24,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.256175994873047,
+   "tokenwise_group_range_over_median_abs": 8.904899597167969,
+   "channelwise_group_range_over_median_abs": 7.433311939239502
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 25,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.073136329650879,
+   "tokenwise_group_range_over_median_abs": 15.2796049118042,
+   "channelwise_group_range_over_median_abs": 5.096296310424805
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 25,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.587339997291565,
+   "tokenwise_group_range_over_median_abs": 7.706750869750977,
+   "channelwise_group_range_over_median_abs": 7.809825897216797
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 26,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.751350164413452,
+   "tokenwise_group_range_over_median_abs": 17.317138671875,
+   "channelwise_group_range_over_median_abs": 5.1349897384643555
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 26,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.7498748302459717,
+   "tokenwise_group_range_over_median_abs": 7.429048538208008,
+   "channelwise_group_range_over_median_abs": 8.689204216003418
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 27,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.223442077636719,
+   "tokenwise_group_range_over_median_abs": 14.751655578613281,
+   "channelwise_group_range_over_median_abs": 4.897795677185059
+  },
+  {
+   "case": "KV-2048-start-0-01",
+   "layer": 27,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.9152288436889648,
+   "tokenwise_group_range_over_median_abs": 7.6797332763671875,
+   "channelwise_group_range_over_median_abs": 9.549253463745117
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 0,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 74.02764892578125,
+   "tokenwise_group_range_over_median_abs": 396.05291748046875,
+   "channelwise_group_range_over_median_abs": 4.082611083984375
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 0,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 4.490556716918945,
+   "tokenwise_group_range_over_median_abs": 13.634703636169434,
+   "channelwise_group_range_over_median_abs": 7.548476219177246
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 1,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 19.05855941772461,
+   "tokenwise_group_range_over_median_abs": 29.32528305053711,
+   "channelwise_group_range_over_median_abs": 3.977354049682617
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 1,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.0024302005767822,
+   "tokenwise_group_range_over_median_abs": 10.258013725280762,
+   "channelwise_group_range_over_median_abs": 6.115318298339844
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 2,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 6.598423004150391,
+   "tokenwise_group_range_over_median_abs": 18.23470687866211,
+   "channelwise_group_range_over_median_abs": 4.555517196655273
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 2,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.260117292404175,
+   "tokenwise_group_range_over_median_abs": 8.412698745727539,
+   "channelwise_group_range_over_median_abs": 6.274754524230957
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 3,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.73120641708374,
+   "tokenwise_group_range_over_median_abs": 14.487074851989746,
+   "channelwise_group_range_over_median_abs": 4.703725814819336
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 3,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.4780068397521973,
+   "tokenwise_group_range_over_median_abs": 8.737030029296875,
+   "channelwise_group_range_over_median_abs": 6.060031414031982
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 4,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.336523532867432,
+   "tokenwise_group_range_over_median_abs": 13.340364456176758,
+   "channelwise_group_range_over_median_abs": 4.7214884757995605
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 4,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.6957902908325195,
+   "tokenwise_group_range_over_median_abs": 8.192185401916504,
+   "channelwise_group_range_over_median_abs": 6.228094577789307
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 5,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.575054168701172,
+   "tokenwise_group_range_over_median_abs": 10.54122257232666,
+   "channelwise_group_range_over_median_abs": 4.57913064956665
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 5,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.3589608669281006,
+   "tokenwise_group_range_over_median_abs": 9.942222595214844,
+   "channelwise_group_range_over_median_abs": 5.818181991577148
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 6,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.131891965866089,
+   "tokenwise_group_range_over_median_abs": 11.445466041564941,
+   "channelwise_group_range_over_median_abs": 4.850767135620117
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 6,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.933959722518921,
+   "tokenwise_group_range_over_median_abs": 11.17361068725586,
+   "channelwise_group_range_over_median_abs": 5.661908149719238
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 7,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 7.882931232452393,
+   "tokenwise_group_range_over_median_abs": 15.603782653808594,
+   "channelwise_group_range_over_median_abs": 3.9759886264801025
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 7,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.907257556915283,
+   "tokenwise_group_range_over_median_abs": 10.29170036315918,
+   "channelwise_group_range_over_median_abs": 5.989795684814453
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 8,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.4593570232391357,
+   "tokenwise_group_range_over_median_abs": 9.675069808959961,
+   "channelwise_group_range_over_median_abs": 4.049019813537598
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 8,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.9989161491394043,
+   "tokenwise_group_range_over_median_abs": 9.619302749633789,
+   "channelwise_group_range_over_median_abs": 5.653982639312744
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 9,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.645386695861816,
+   "tokenwise_group_range_over_median_abs": 13.72458553314209,
+   "channelwise_group_range_over_median_abs": 4.87833833694458
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 9,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.617583990097046,
+   "tokenwise_group_range_over_median_abs": 9.728873252868652,
+   "channelwise_group_range_over_median_abs": 5.804308891296387
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 10,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.592373847961426,
+   "tokenwise_group_range_over_median_abs": 12.83602523803711,
+   "channelwise_group_range_over_median_abs": 4.386806488037109
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 10,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.4952616691589355,
+   "tokenwise_group_range_over_median_abs": 8.571762084960938,
+   "channelwise_group_range_over_median_abs": 5.950949192047119
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 11,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.464714050292969,
+   "tokenwise_group_range_over_median_abs": 13.440155982971191,
+   "channelwise_group_range_over_median_abs": 4.637945175170898
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 11,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 3.050142765045166,
+   "tokenwise_group_range_over_median_abs": 9.836213111877441,
+   "channelwise_group_range_over_median_abs": 5.642176151275635
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 12,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.298008441925049,
+   "tokenwise_group_range_over_median_abs": 10.573020935058594,
+   "channelwise_group_range_over_median_abs": 4.385910987854004
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 12,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.602217674255371,
+   "tokenwise_group_range_over_median_abs": 9.279397964477539,
+   "channelwise_group_range_over_median_abs": 5.789011001586914
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 13,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 2.960146427154541,
+   "tokenwise_group_range_over_median_abs": 10.147138595581055,
+   "channelwise_group_range_over_median_abs": 4.293798923492432
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 13,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.5823702812194824,
+   "tokenwise_group_range_over_median_abs": 9.88556957244873,
+   "channelwise_group_range_over_median_abs": 6.2171430587768555
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 14,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 5.525326728820801,
+   "tokenwise_group_range_over_median_abs": 14.691518783569336,
+   "channelwise_group_range_over_median_abs": 4.390986442565918
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 14,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.762302875518799,
+   "tokenwise_group_range_over_median_abs": 10.550785064697266,
+   "channelwise_group_range_over_median_abs": 6.177504539489746
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 15,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 9.746209144592285,
+   "tokenwise_group_range_over_median_abs": 33.204254150390625,
+   "channelwise_group_range_over_median_abs": 4.259096145629883
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 15,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.8779959678649902,
+   "tokenwise_group_range_over_median_abs": 8.271770477294922,
+   "channelwise_group_range_over_median_abs": 6.1732025146484375
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 16,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.802544116973877,
+   "tokenwise_group_range_over_median_abs": 13.355172157287598,
+   "channelwise_group_range_over_median_abs": 4.301507472991943
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 16,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.2033286094665527,
+   "tokenwise_group_range_over_median_abs": 9.078627586364746,
+   "channelwise_group_range_over_median_abs": 5.801849365234375
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 17,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.942746162414551,
+   "tokenwise_group_range_over_median_abs": 13.990270614624023,
+   "channelwise_group_range_over_median_abs": 4.405348300933838
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 17,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.1829254627227783,
+   "tokenwise_group_range_over_median_abs": 8.200282096862793,
+   "channelwise_group_range_over_median_abs": 6.2376933097839355
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 18,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.925411224365234,
+   "tokenwise_group_range_over_median_abs": 14.39194107055664,
+   "channelwise_group_range_over_median_abs": 4.331447124481201
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 18,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.23721981048584,
+   "tokenwise_group_range_over_median_abs": 9.202754020690918,
+   "channelwise_group_range_over_median_abs": 5.8502583503723145
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 19,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.9478373527526855,
+   "tokenwise_group_range_over_median_abs": 13.383251190185547,
+   "channelwise_group_range_over_median_abs": 4.123003959655762
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 19,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.414940357208252,
+   "tokenwise_group_range_over_median_abs": 8.66462516784668,
+   "channelwise_group_range_over_median_abs": 6.026030540466309
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 20,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.117604732513428,
+   "tokenwise_group_range_over_median_abs": 13.21652603149414,
+   "channelwise_group_range_over_median_abs": 4.458972454071045
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 20,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.9941699504852295,
+   "tokenwise_group_range_over_median_abs": 7.519313335418701,
+   "channelwise_group_range_over_median_abs": 6.282453536987305
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 21,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.806593418121338,
+   "tokenwise_group_range_over_median_abs": 13.056795120239258,
+   "channelwise_group_range_over_median_abs": 4.6385626792907715
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 21,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.500678539276123,
+   "tokenwise_group_range_over_median_abs": 8.598742485046387,
+   "channelwise_group_range_over_median_abs": 5.984127044677734
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 22,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.8612380027770996,
+   "tokenwise_group_range_over_median_abs": 13.782301902770996,
+   "channelwise_group_range_over_median_abs": 4.8905348777771
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 22,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.9792563915252686,
+   "tokenwise_group_range_over_median_abs": 7.465975284576416,
+   "channelwise_group_range_over_median_abs": 7.07613468170166
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 23,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.347780227661133,
+   "tokenwise_group_range_over_median_abs": 13.888461112976074,
+   "channelwise_group_range_over_median_abs": 4.5789923667907715
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 23,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.118471622467041,
+   "tokenwise_group_range_over_median_abs": 7.963146686553955,
+   "channelwise_group_range_over_median_abs": 7.034666538238525
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 24,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.640688419342041,
+   "tokenwise_group_range_over_median_abs": 13.799443244934082,
+   "channelwise_group_range_over_median_abs": 4.95442008972168
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 24,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 2.2285327911376953,
+   "tokenwise_group_range_over_median_abs": 8.861764907836914,
+   "channelwise_group_range_over_median_abs": 7.45815372467041
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 25,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.041624069213867,
+   "tokenwise_group_range_over_median_abs": 15.342175483703613,
+   "channelwise_group_range_over_median_abs": 5.114653587341309
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 25,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.577266812324524,
+   "tokenwise_group_range_over_median_abs": 7.718620777130127,
+   "channelwise_group_range_over_median_abs": 7.812646389007568
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 26,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 3.728196144104004,
+   "tokenwise_group_range_over_median_abs": 17.245235443115234,
+   "channelwise_group_range_over_median_abs": 5.144444465637207
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 26,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.7344632148742676,
+   "tokenwise_group_range_over_median_abs": 7.365474224090576,
+   "channelwise_group_range_over_median_abs": 8.641533851623535
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 27,
+   "tensor": "K",
+   "channel_absmax_max_over_median": 4.925204277038574,
+   "tokenwise_group_range_over_median_abs": 14.653658866882324,
+   "channelwise_group_range_over_median_abs": 4.902617931365967
+  },
+  {
+   "case": "KV-2048-start-0-02",
+   "layer": 27,
+   "tensor": "V",
+   "channel_absmax_max_over_median": 1.7694010734558105,
+   "tokenwise_group_range_over_median_abs": 7.650920867919922,
+   "channelwise_group_range_over_median_abs": 9.551392555236816
+  }
+ ]
+}

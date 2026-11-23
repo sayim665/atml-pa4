@@ -1,0 +1,28 @@
+pool K=16 mixed: 144000 examples in 122s
+/kaggle/working/atml-pa4/task2/mqar.py:298: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  curve.append(dict(step=step + 1, loss=float(loss), lr=lr_at(step), grad_norm=float(gnorm)))
+hybrid_K16_mixed s6304 step 500 loss 4.162 dev {'step': 500, 'seconds': 11.751984951999987, 'dev_acc_near': 0.016357421875, 'dev_acc_far': 0.01513671875, 'dev_acc_mixed': 0.014404296875}
+hybrid_K16_mixed s6304 step 1000 loss 3.793 dev {'step': 1000, 'seconds': 19.975291044000016, 'dev_acc_near': 0.063720703125, 'dev_acc_far': 0.062255859375, 'dev_acc_mixed': 0.061767578125}
+hybrid_K16_mixed s6304 step 1500 loss 3.432 dev {'step': 1500, 'seconds': 28.269493834000002, 'dev_acc_near': 0.065673828125, 'dev_acc_far': 0.059326171875, 'dev_acc_mixed': 0.058349609375}
+hybrid_K16_mixed s6304 step 2000 loss 3.057 dev {'step': 2000, 'seconds': 36.671757082, 'dev_acc_near': 0.0634765625, 'dev_acc_far': 0.060546875, 'dev_acc_mixed': 0.0634765625}
+hybrid_K16_mixed s6304 step 3000 loss 2.870 dev {'step': 3000, 'seconds': 53.703347207000036, 'dev_acc_near': 0.0615234375, 'dev_acc_far': 0.0625, 'dev_acc_mixed': 0.064453125}
+hybrid_K16_mixed s6304 step 4500 loss 2.822 dev {'step': 4500, 'seconds': 80.04742944700001, 'dev_acc_near': 0.064453125, 'dev_acc_far': 0.06005859375, 'dev_acc_mixed': 0.06689453125}
+hybrid_K16_mixed s6305 step 500 loss 4.164 dev {'step': 500, 'seconds': 8.974625978999995, 'dev_acc_near': 0.01416015625, 'dev_acc_far': 0.016357421875, 'dev_acc_mixed': 0.016357421875}
+hybrid_K16_mixed s6305 step 1000 loss 3.738 dev {'step': 1000, 'seconds': 18.246821525999962, 'dev_acc_near': 0.064697265625, 'dev_acc_far': 0.058837890625, 'dev_acc_mixed': 0.057373046875}
+hybrid_K16_mixed s6305 step 1500 loss 3.266 dev {'step': 1500, 'seconds': 27.583872035999946, 'dev_acc_near': 0.06201171875, 'dev_acc_far': 0.06396484375, 'dev_acc_mixed': 0.0615234375}
+hybrid_K16_mixed s6305 step 2000 loss 3.001 dev {'step': 2000, 'seconds': 36.75744969499999, 'dev_acc_near': 0.0615234375, 'dev_acc_far': 0.061767578125, 'dev_acc_mixed': 0.063720703125}
+hybrid_K16_mixed s6305 step 3000 loss 2.881 dev {'step': 3000, 'seconds': 54.67114789499993, 'dev_acc_near': 0.064697265625, 'dev_acc_far': 0.058837890625, 'dev_acc_mixed': 0.0654296875}
+hybrid_K16_mixed s6305 step 4500 loss 2.822 dev {'step': 4500, 'seconds': 81.32665669900001, 'dev_acc_near': 0.06103515625, 'dev_acc_far': 0.058349609375, 'dev_acc_mixed': 0.061279296875}
+hybrid_K16_mixed s6306 step 500 loss 4.167 dev {'step': 500, 'seconds': 8.876756587000045, 'dev_acc_near': 0.017578125, 'dev_acc_far': 0.01611328125, 'dev_acc_mixed': 0.0146484375}
+hybrid_K16_mixed s6306 step 1000 loss 3.809 dev {'step': 1000, 'seconds': 17.95701322000002, 'dev_acc_near': 0.06591796875, 'dev_acc_far': 0.056396484375, 'dev_acc_mixed': 0.065185546875}
+hybrid_K16_mixed s6306 step 1500 loss 3.286 dev {'step': 1500, 'seconds': 27.077307316999963, 'dev_acc_near': 0.065185546875, 'dev_acc_far': 0.07080078125, 'dev_acc_mixed': 0.065185546875}
+hybrid_K16_mixed s6306 step 2000 loss 3.060 dev {'step': 2000, 'seconds': 36.19767242199998, 'dev_acc_near': 0.059814453125, 'dev_acc_far': 0.061279296875, 'dev_acc_mixed': 0.062255859375}
+hybrid_K16_mixed s6306 step 3000 loss 2.893 dev {'step': 3000, 'seconds': 54.224168641000006, 'dev_acc_near': 0.063232421875, 'dev_acc_far': 0.072021484375, 'dev_acc_mixed': 0.063720703125}
+hybrid_K16_mixed s6306 step 4500 loss 2.838 dev {'step': 4500, 'seconds': 81.035263493, 'dev_acc_near': 0.062744140625, 'dev_acc_far': 0.06494140625, 'dev_acc_mixed': 0.065185546875}
+evaluated hybrid_K16_mixed_s6304
+evaluated hybrid_K16_mixed_s6305
+evaluated hybrid_K16_mixed_s6306
+[{'L': 256, 'dtype': 'torch.float32', 'dispatched': 'EFFICIENT_ATTENTION'}, {'L': 1024, 'dtype': 'torch.float32', 'dispatched': 'EFFICIENT_ATTENTION'}, {'L': 4096, 'dtype': 'torch.float32', 'dispatched': 'EFFICIENT_ATTENTION'}, {'L': 8192, 'dtype': 'torch.float32', 'dispatched': 'EFFICIENT_ATTENTION'}, {'L': 256, 'dtype': 'torch.float16', 'dispatched': 'EFFICIENT_ATTENTION'}, {'L': 1024, 'dtype': 'torch.float16', 'dispatched': 'EFFICIENT_ATTENTION'}, {'L': 4096, 'dtype': 'torch.float16', 'dispatched': 'EFFICIENT_ATTENTION'}, {'L': 8192, 'dtype': 'torch.float16', 'dispatched': 'EFFICIENT_ATTENTION'}]
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795439899.169371     130 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
