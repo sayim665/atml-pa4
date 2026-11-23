@@ -1,0 +1,85 @@
+{
+  "condition": "q3f_int4",
+  "seed": 6304,
+  "compression_seconds": 7.422070319000113,
+  "calibration_seconds": 22.659352761000036,
+  "awq_scale_search_seconds": 168.90436346400003,
+  "storage": {
+    "payload_bytes": 655048704,
+    "group_metadata_bytes": 30707712,
+    "serialized_awq_scale_bytes": 86016,
+    "uncompressed_fp16_bytes": 467037184,
+    "total_bytes": 1152879616,
+    "nominal_bits_per_eligible_weight": 3.9996998799519807,
+    "effective_bits_per_eligible_weight": 4.187725090036015,
+    "dense_fp16_total_bytes": 3087428608
+  },
+  "calib_output_error_mean": 0.0055231121800901825,
+  "calib_output_error_median": 0.004755801055580378,
+  "dev_nll": 2.569543722790981,
+  "wikitext2": {
+    "suite": "wikitext2",
+    "n_windows": 437,
+    "n_scored_tokens": 50000,
+    "mean_nll": 2.8624214486694335,
+    "ppl": 17.50386036116931
+  },
+  "c4": {
+    "suite": "c4",
+    "n_windows": 177,
+    "n_scored_tokens": 50000,
+    "mean_nll": 2.7648641333770754,
+    "ppl": 15.876882705629836
+  },
+  "hellaswag": {
+    "n": 2000,
+    "acc": 0.4945,
+    "acc_norm": 0.679,
+    "task_version": "lm-eval-harness hellaswag v1 preprocessing; zero-shot; ctx_a + ' ' + ctx_b.capitalize()"
+  },
+  "resources": {
+    "unit": "milliseconds",
+    "repetitions": 5,
+    "warmup": 2,
+    "batch": 1,
+    "execution": "dense FP16 matmuls on the effective (dequantized / zero-filled) weights",
+    "prefill_512_ms": {
+      "mean": 112.89799739997761,
+      "std": 2.410382557683226,
+      "min": 110.7143570000062,
+      "all": [
+        112.26545399995302,
+        110.7143570000062,
+        112.72174700002324,
+        111.28190599993104,
+        117.50652299997455
+      ]
+    },
+    "prefill_2048_ms": {
+      "mean": 482.3764564000612,
+      "std": 2.2221535422965926,
+      "min": 479.5149990000027,
+      "all": [
+        479.5149990000027,
+        482.8153610001209,
+        480.11962700002186,
+        484.35031400003936,
+        485.08198100012123
+      ]
+    },
+    "decode_64_ms": {
+      "mean": 2357.4573998000233,
+      "std": 23.422200549796738,
+      "min": 2328.2048779999513,
+      "all": [
+        2328.2048779999513,
+        2355.354382000087,
+        2384.5591770000283,
+        2383.4517390000656,
+        2335.7168229999843
+      ]
+    },
+    "peak_allocated_bytes": 3735596544,
+    "peak_reserved_bytes": 4148166656
+  }
+}
