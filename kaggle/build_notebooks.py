@@ -128,7 +128,8 @@ def main():
     import sys
     commit = sys.argv[1] if len(sys.argv) > 1 else "main"
     for name, cells in [("pa4_data_setup.ipynb", DATA_SETUP), ("task1_runner.ipynb", runner("task1", commit)),
-                        ("task2_runner.ipynb", runner("task2", commit))]:
+                        ("task2_runner.ipynb", runner("task2", commit)),
+                        ("task3_runner.ipynb", runner("task3", commit))]:
         out = HERE / name
         out.write_text(json.dumps(make_notebook(cells), indent=1), encoding="utf-8")
         print("wrote", out)
