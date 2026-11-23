@@ -1,6 +1,6 @@
 """Build the Kaggle notebooks from plain cell lists (stdlib only).
 
-Run: python kaggle/build_notebooks.py
+Run: python kaggle/build_notebooks.py [commit]
 """
 import json
 import pathlib
@@ -149,16 +149,29 @@ print(subprocess.run('cd /kaggle/working/pkg && zip -qr /kaggle/working/task3_re
 ]
 
 
+# Commit each Kaggle run actually executed (printed as "code commit:" in its notebook output). Rebuilding with no
+# argument reproduces those runs exactly; `python kaggle/build_notebooks.py <commit>` pins every runner to <commit>
+# (e.g. the current main, which includes the later fixes listed in the README).
+RUN_COMMITS = {
+    "task1": "827fae1",      # Task 1 run 1 (all P/Q conditions)
+    "task1q3f": "ac8f4f5",   # Task 1 follow-up: projection-level Fisher Q3
+    "task2": "b0398de",      # Task 2 run 1 (A, B1/B2, C)
+    "task2b3": "74c108d",    # Task 2 B3 intervention + SDPA dispatch + key statistics
+    "task2sel": "142b043",   # Task 2 Part C aligned selections
+    "task3": "b806dfa",      # Task 3 run 1 (repackaged by task3_collect.ipynb)
+}
+
+
 def main():
     import sys
-    commit = sys.argv[1] if len(sys.argv) > 1 else "main"
-    for name, cells in [("pa4_data_setup.ipynb", DATA_SETUP), ("task1_runner.ipynb", runner("task1", commit)),
-                        ("task2_runner.ipynb", runner("task2", commit)),
-                        ("task3_runner.ipynb", runner("task3", commit)),
-                        ("task1q3f_runner.ipynb", runner("task1q3f", commit)),
-                        ("task2b3_runner.ipynb", runner("task2b3", commit))]:
+    override = sys.argv[1] if len(sys.argv) > 1 else None
+    outputs = [("pa4_data_setup.ipynb", make_notebook(DATA_SETUP)),
+               ("task3_collect.ipynb", make_notebook(TASK3_COLLECT, gpu=False))]
+    for task, commit in RUN_COMMITS.items():
+        outputs.append((f"{task}_runner.ipynb", make_notebook(runner(task, override or commit))))
+    for name, nb in outputs:
         out = HERE / name
-        out.write_text(json.dumps(make_notebook(cells), indent=1), encoding="utf-8")
+        out.write_text(json.dumps(nb, indent=1), encoding="utf-8")
         print("wrote", out)
 
 
