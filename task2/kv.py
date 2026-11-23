@@ -502,9 +502,36 @@ def pack_benchmark(model, geo):
     return rows
 
 
+@torch.no_grad()
+def key_stats(model, tok, cases):
+    """Why does token-wise INT4 fail on keys? Per layer: channel-wise spread of |K| (max channel absmax / median
+    channel absmax) and the token-wise vs channel-wise group range relative to the typical |value| in that group."""
+    out = []
+    for case in cases[:3]:
+        prep = prepare(tok, case)
+        from transformers import DynamicCache
+        cache = DynamicCache()
+        L = prep["split"]
+        forward(model, torch.tensor(prep["ids"][:L], device=DEV)[None], cache, 0, 0)
+        for layer, (k, v) in enumerate(cache_kv(cache)):
+            for name, x in (("K", k), ("V", v)):
+                x = x[0].float()                                              # [H, L, d]
+                ch = x.abs().amax(dim=1)                                      # per-channel absmax [H, d]
+                n = (x.shape[1] // GROUP) * GROUP
+                tg = x[:, :n].reshape(x.shape[0], n, -1, GROUP)                # token-wise groups
+                cg = x[:, :n].reshape(x.shape[0], n // GROUP, GROUP, -1)       # channel-wise groups
+                tok_rng = (tg.amax(-1) - tg.amin(-1)) / tg.abs().median(dim=-1).values.clamp(min=1e-6)
+                ch_rng = (cg.amax(2) - cg.amin(2)) / cg.abs().median(dim=2).values.clamp(min=1e-6)
+                out.append(dict(case=case["id"], layer=layer, tensor=name,
+                                channel_absmax_max_over_median=float((ch.amax(-1) / ch.median(-1).values).mean()),
+                                tokenwise_group_range_over_median_abs=float(tok_rng.median()),
+                                channelwise_group_range_over_median_abs=float(ch_rng.median())))
+    return out
+
+
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--stage", choices=["validate", "run", "pack"], required=True)
+    p.add_argument("--stage", choices=["validate", "run", "pack", "keystats"], required=True)
     p.add_argument("--shard", type=int, default=0)
     p.add_argument("--n-shards", type=int, default=1)
     a = p.parse_args()
@@ -520,6 +547,8 @@ def main():
     if a.stage == "validate":
         picks = [c for c in cases if c["id"].endswith("-00")][:6] if not SMOKE else cases[:2]
         json.dump(dict(meta=meta, rows=validate(model, tok, geo, picks)), open(RES / "validation.json", "w"), indent=1)
+    elif a.stage == "keystats":
+        json.dump(dict(meta=meta, rows=key_stats(model, tok, cases)), open(RES / "key_stats.json", "w"), indent=1)
     elif a.stage == "pack":
         json.dump(dict(meta=meta, rows=pack_benchmark(model, geo)), open(RES / "pack_benchmark.json", "w"), indent=1)
     else:

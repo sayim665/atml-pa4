@@ -1,0 +1,205 @@
+{
+ "rows": [
+  {
+   "T": 256,
+   "variant": "dense_sdpa",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 0.2929043999301939,
+   "ms_std": 0.009462419412612747,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 1048576
+  },
+  {
+   "T": 256,
+   "variant": "window_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 0.5379172999255388,
+   "ms_std": 0.013104305696942972,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 2162688
+  },
+  {
+   "T": 256,
+   "variant": "dilated_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 0.6901762000325107,
+   "ms_std": 0.019175215399243044,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 2359296
+  },
+  {
+   "T": 256,
+   "variant": "linear_parallel",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 0.4927730000417796,
+   "ms_std": 0.004101363724151904,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 27394048
+  },
+  {
+   "T": 256,
+   "variant": "linear_recurrent_chunk64",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 1.584032099981414,
+   "ms_std": 0.22673933357580361,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 5124096
+  },
+  {
+   "T": 1024,
+   "variant": "dense_sdpa",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 2.4216468000304303,
+   "ms_std": 0.032167664602522905,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 4194304
+  },
+  {
+   "T": 1024,
+   "variant": "window_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 4.919014299912305,
+   "ms_std": 0.028017660833310115,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 22020096
+  },
+  {
+   "T": 1024,
+   "variant": "dilated_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 3.678482699979213,
+   "ms_std": 0.5540024996888859,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 25165824
+  },
+  {
+   "T": 1024,
+   "variant": "linear_parallel",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 4.029707800009419,
+   "ms_std": 0.10661333428443674,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 276824064
+  },
+  {
+   "T": 1024,
+   "variant": "linear_recurrent_chunk64",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 5.290230400032669,
+   "ms_std": 0.18701079346615176,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 17707008
+  },
+  {
+   "T": 4096,
+   "variant": "dense_sdpa",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 19.351073799862206,
+   "ms_std": 0.2818266301233909,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 16777216
+  },
+  {
+   "T": 4096,
+   "variant": "window_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 44.52611269994122,
+   "ms_std": 0.2804130629035839,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 301989888
+  },
+  {
+   "T": 4096,
+   "variant": "dilated_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 48.93888919991696,
+   "ms_std": 0.25746067976436865,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 352321536
+  },
+  {
+   "T": 4096,
+   "variant": "linear_parallel",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 77.82641909998347,
+   "ms_std": 0.7346131536216711,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 4328521728
+  },
+  {
+   "T": 4096,
+   "variant": "linear_recurrent_chunk64",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 22.446991700007857,
+   "ms_std": 0.4424930173209055,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 68038656
+  },
+  {
+   "T": 8192,
+   "variant": "dense_sdpa",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 75.04385789998196,
+   "ms_std": 0.40771768757348187,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 33554432
+  },
+  {
+   "T": 8192,
+   "variant": "window_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 182.4717992999922,
+   "ms_std": 0.6259731637067482,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 1174405120
+  },
+  {
+   "T": 8192,
+   "variant": "dilated_mask",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 200.06329900006676,
+   "ms_std": 0.4318837623688843,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 1375731712
+  },
+  {
+   "T": 8192,
+   "variant": "linear_parallel",
+   "B": 8,
+   "dtype": "float32",
+   "status": "oom"
+  },
+  {
+   "T": 8192,
+   "variant": "linear_recurrent_chunk64",
+   "B": 8,
+   "dtype": "float32",
+   "ms_mean": 40.84058860003097,
+   "ms_std": 0.5663767116640344,
+   "status": "ok",
+   "peak_allocated_bytes_above_inputs": 135147520
+  }
+ ],
+ "notes": [
+  "window/dilated build explicit [T, T] boolean masks",
+  "linear_parallel materializes [T, T] per head; recurrent keeps d x d state"
+ ]
+}

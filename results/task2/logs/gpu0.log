@@ -1,0 +1,399 @@
+/usr/local/lib/python3.13/dist-packages/torch/autograd/graph.py:869: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:335.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+256 float32 dense ok 0.544
+256 float32 tiled ok 2.2
+256 float32 sdpa ok 0.18
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: Memory efficient kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:986.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: Memory Efficient attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:552.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: Flash attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:988.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: Flash attention only supports gpu architectures in the range [sm80, sm121]. Attempting to run on a sm 7.5 gpu. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:342.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: cuDNN attention kernel not used because: (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:990.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: cuDNN attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:706.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+256 float32 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+256 float32 sdpa_forced_efficient_attention ok 0.22
+256 float32 sdpa_forced_math ok 0.435
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: Flash attention has been runtime disabled. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:540.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: Expected query, key and value to all be of dtype: {Half}. Got Query dtype: float, Key dtype: float, and Value dtype: float instead. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/sdp_utils_cpp.h:91.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+256 float32 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+256 float16 dense ok 0.495
+256 float16 tiled ok 3.211
+256 float16 sdpa ok 0.089
+256 float16 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+256 float16 sdpa_forced_efficient_attention ok 0.114
+256 float16 sdpa_forced_math ok 0.497
+/kaggle/working/atml-pa4/task2/attention_ops.py:83: UserWarning: cuDNN MHA only supports gpu architectures in the range [sm80, sm121]. Attempting to run on a sm 7.5 gpu. (Triggered internally at /pytorch/aten/src/ATen/native/transformers/cuda/sdp_utils.cpp:647.)
+  return F.scaled_dot_product_attention(q, k, v, is_causal=True)
+256 float16 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+512 float32 dense ok 1.096
+512 float32 tiled ok 6.41
+512 float32 sdpa ok 0.369
+512 float32 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+512 float32 sdpa_forced_efficient_attention ok 0.369
+512 float32 sdpa_forced_math ok 0.787
+512 float32 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+512 float16 dense ok 0.6
+512 float16 tiled ok 7.043
+512 float16 sdpa ok 0.12
+512 float16 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+512 float16 sdpa_forced_efficient_attention ok 0.168
+512 float16 sdpa_forced_math ok 0.832
+512 float16 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+1024 float32 dense ok 2.787
+1024 float32 tiled ok 21.734
+1024 float32 sdpa ok 0.563
+1024 float32 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+1024 float32 sdpa_forced_efficient_attention ok 0.524
+1024 float32 sdpa_forced_math ok 1.97
+1024 float32 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+1024 float16 dense ok 1.444
+1024 float16 tiled ok 26.177
+1024 float16 sdpa ok 0.148
+1024 float16 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+1024 float16 sdpa_forced_efficient_attention ok 0.176
+1024 float16 sdpa_forced_math ok 2.232
+1024 float16 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+2048 float32 dense ok 10.225
+2048 float32 tiled ok 93.201
+2048 float32 sdpa ok 2.638
+2048 float32 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+2048 float32 sdpa_forced_efficient_attention ok 1.666
+2048 float32 sdpa_forced_math ok 7.161
+2048 float32 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+2048 float16 dense ok 5.339
+2048 float16 tiled ok 94.696
+2048 float16 sdpa ok 0.765
+2048 float16 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+2048 float16 sdpa_forced_efficient_attention ok 0.794
+2048 float16 sdpa_forced_math ok 8.135
+2048 float16 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+4096 float32 dense ok 40.17
+4096 float32 tiled ok 380.139
+4096 float32 sdpa ok 5.756
+4096 float32 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+4096 float32 sdpa_forced_efficient_attention ok 6.237
+4096 float32 sdpa_forced_math ok 28.596
+4096 float32 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+4096 float16 dense ok 21.327
+4096 float16 tiled ok 350.771
+4096 float16 sdpa ok 1.591
+4096 float16 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+4096 float16 sdpa_forced_efficient_attention ok 1.595
+4096 float16 sdpa_forced_math ok 31.736
+4096 float16 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+8192 float32 dense oom 168.339
+8192 float32 tiled ok 1367.875
+8192 float32 sdpa ok 24.744
+8192 float32 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+8192 float32 sdpa_forced_efficient_attention ok 24.517
+8192 float32 sdpa_forced_math ok 123.696
+8192 float32 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+8192 float16 dense ok 88.45
+8192 float16 tiled ok 1468.151
+8192 float16 sdpa ok 4.935
+8192 float16 sdpa_forced_flash_attention unsupported: No available kernel. Aborting execution. nan
+8192 float16 sdpa_forced_efficient_attention ok 5.5
+8192 float16 sdpa_forced_math ok 134.202
+8192 float16 sdpa_forced_cudnn_attention unsupported: No available kernel. Aborting execution. nan
+part A done
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795431564.717267     165 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+{'id': 'KV-2048-start-0-00', 'L_ctx': 2633, 'split_vs_direct_max_abs_logit': 0.08203125, 'argmax_agree': 1.0, 'all_finite': True, 'generate_text': '26836', 'pipeline_text': '26836', 'full_retention_reproduces_generate': True}
+{'id': 'KV-2048-start-2-00', 'L_ctx': 2639, 'split_vs_direct_max_abs_logit': 0.09375, 'argmax_agree': 1.0, 'all_finite': True, 'generate_text': '68251', 'pipeline_text': '68251', 'full_retention_reproduces_generate': True}
+{'id': 'KV-2048-start-8-00', 'L_ctx': 2607, 'split_vs_direct_max_abs_logit': 0.078125, 'argmax_agree': 1.0, 'all_finite': True, 'generate_text': '67030', 'pipeline_text': '67030', 'full_retention_reproduces_generate': True}
+{'id': 'KV-2048-middle-0-00', 'L_ctx': 2642, 'split_vs_direct_max_abs_logit': 0.09375, 'argmax_agree': 1.0, 'all_finite': True, 'generate_text': '32056', 'pipeline_text': '32056', 'full_retention_reproduces_generate': True}
+{'id': 'KV-2048-middle-2-00', 'L_ctx': 2635, 'split_vs_direct_max_abs_logit': 0.1328125, 'argmax_agree': 1.0, 'all_finite': True, 'generate_text': '49115', 'pipeline_text': '49115', 'full_retention_reproduces_generate': True}
+{'id': 'KV-2048-middle-8-00', 'L_ctx': 2613, 'split_vs_direct_max_abs_logit': 0.14453125, 'argmax_agree': 1.0, 'all_finite': True, 'generate_text': '84561', 'pipeline_text': '84561', 'full_retention_reproduces_generate': True}
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795431643.373095     236 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+KV-2048-start-0-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-0-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-2-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-start-8-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-0-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-2-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-middle-8-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=0
+KV-2048-end-0-00 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-01 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-02 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-03 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-04 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-05 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-06 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-07 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-08 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-0-09 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-00 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-01 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-02 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-03 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-04 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-05 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-06 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-07 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-08 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-2-09 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-00 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-01 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=0
+KV-2048-end-8-02 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-03 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-04 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-05 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-06 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-07 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-08 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-2048-end-8-09 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-0-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-2-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-start-8-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-0-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-2-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-00 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-01 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-02 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-03 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-04 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-05 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-06 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-07 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-08 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-middle-8-09 full=1 sink_recent=0 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-00 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-01 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-02 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-03 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-04 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-05 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-06 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-07 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-08 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-0-09 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-00 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-01 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-02 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-03 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-04 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-05 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-06 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-07 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-08 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-2-09 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-00 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-01 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-02 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-03 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-04 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-05 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-06 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-07 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-08 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+KV-4096-end-8-09 full=1 sink_recent=1 question_aware=1 int4_token=0 int4_kivi=1 hybrid=1
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795432665.311982     260 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+{'batch': 1, 'L': 2048, 'bits': 4, 'pack_ms': 18.453288399973644, 'unpack_ms': 12.581367600023441, 'serialized_bytes': 16515072, 'formula_bytes': 16515072, 'fp16_bytes': 58720256, 'decode_step_fp16_ms': 49.33660399999553, 'decode_step_unpack_plus_step_ms': 58.91891970002234, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+{'batch': 1, 'L': 2048, 'bits': 2, 'pack_ms': 22.984210000049643, 'unpack_ms': 15.731851499958793, 'serialized_bytes': 9175040, 'formula_bytes': 9175040, 'fp16_bytes': 58720256, 'decode_step_fp16_ms': 50.41135100000247, 'decode_step_unpack_plus_step_ms': 62.84603129993229, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+{'batch': 1, 'L': 4096, 'bits': 4, 'pack_ms': 17.522061399995437, 'unpack_ms': 11.352519100046266, 'serialized_bytes': 33030144, 'formula_bytes': 33030144, 'fp16_bytes': 117440512, 'decode_step_fp16_ms': 49.34261189998779, 'decode_step_unpack_plus_step_ms': 60.7125064000229, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+{'batch': 1, 'L': 4096, 'bits': 2, 'pack_ms': 23.065347800024938, 'unpack_ms': 15.015558899972348, 'serialized_bytes': 18350080, 'formula_bytes': 18350080, 'fp16_bytes': 117440512, 'decode_step_fp16_ms': 49.392504999991615, 'decode_step_unpack_plus_step_ms': 62.112607400013076, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+{'batch': 8, 'L': 2048, 'bits': 4, 'pack_ms': 62.96708710003713, 'unpack_ms': 36.658148200012874, 'serialized_bytes': 132120576, 'formula_bytes': 132120576, 'fp16_bytes': 469762048, 'decode_step_fp16_ms': 117.61878259997047, 'decode_step_unpack_plus_step_ms': 150.60293230001207, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+{'batch': 8, 'L': 2048, 'bits': 2, 'pack_ms': 63.62657759998456, 'unpack_ms': 39.51952509999046, 'serialized_bytes': 73400320, 'formula_bytes': 73400320, 'fp16_bytes': 469762048, 'decode_step_fp16_ms': 117.65330309999626, 'decode_step_unpack_plus_step_ms': 153.4694682999998, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+{'batch': 8, 'L': 4096, 'bits': 4, 'pack_ms': 123.39567329995589, 'unpack_ms': 74.01156970004195, 'serialized_bytes': 264241152, 'formula_bytes': 264241152, 'fp16_bytes': 939524096, 'decode_step_fp16_ms': 240.45421849998547, 'decode_step_unpack_plus_step_ms': 306.3740011999471, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+{'batch': 8, 'L': 4096, 'bits': 2, 'pack_ms': 125.52799450002112, 'unpack_ms': 79.17412680003508, 'serialized_bytes': 146800640, 'formula_bytes': 146800640, 'fp16_bytes': 939524096, 'decode_step_fp16_ms': 240.38556810000955, 'decode_step_unpack_plus_step_ms': 311.308995100012, 'reps': 10, 'note': 'FP16 reference step also rebuilds its cache from a clone, matching the copy cost'}
+/kaggle/working/atml-pa4/task2/mqar.py:298: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  curve.append(dict(step=step + 1, loss=float(loss), lr=lr_at(step), grad_norm=float(gnorm)))
+linear_K4_mixed s6304 step 500 loss 2.671 dev {'step': 500, 'seconds': 8.778025357999923, 'dev_acc_near': 0.2421875, 'dev_acc_far': 0.2490234375, 'dev_acc_mixed': 0.2373046875}
+linear_K4_mixed s6304 step 1000 loss 1.571 dev {'step': 1000, 'seconds': 17.270404651999797, 'dev_acc_near': 0.251953125, 'dev_acc_far': 0.24609375, 'dev_acc_mixed': 0.234375}
+linear_K4_mixed s6304 step 1500 loss 1.555 dev {'step': 1500, 'seconds': 25.811876773999984, 'dev_acc_near': 0.240234375, 'dev_acc_far': 0.236328125, 'dev_acc_mixed': 0.2509765625}
+linear_K4_mixed s6304 step 2000 loss 1.437 dev {'step': 2000, 'seconds': 34.38737801499997, 'dev_acc_near': 0.267578125, 'dev_acc_far': 0.2958984375, 'dev_acc_mixed': 0.29296875}
+linear_K4_mixed s6304 step 3000 loss 0.051 dev {'step': 3000, 'seconds': 51.45728362299974, 'dev_acc_near': 0.9775390625, 'dev_acc_far': 0.9716796875, 'dev_acc_mixed': 0.966796875}
+linear_K4_mixed s6304 step 4500 loss 0.011 dev {'step': 4500, 'seconds': 77.1011556179999, 'dev_acc_near': 0.990234375, 'dev_acc_far': 0.9833984375, 'dev_acc_mixed': 0.982421875}
+linear_K4_mixed s6305 step 500 loss 2.154 dev {'step': 500, 'seconds': 8.471203177999996, 'dev_acc_near': 0.2431640625, 'dev_acc_far': 0.263671875, 'dev_acc_mixed': 0.2470703125}
+linear_K4_mixed s6305 step 1000 loss 1.578 dev {'step': 1000, 'seconds': 17.15049284199995, 'dev_acc_near': 0.2275390625, 'dev_acc_far': 0.2392578125, 'dev_acc_mixed': 0.24609375}
+linear_K4_mixed s6305 step 1500 loss 1.520 dev {'step': 1500, 'seconds': 25.838240698999925, 'dev_acc_near': 0.2490234375, 'dev_acc_far': 0.2490234375, 'dev_acc_mixed': 0.240234375}
+linear_K4_mixed s6305 step 2000 loss 1.477 dev {'step': 2000, 'seconds': 34.53169972899968, 'dev_acc_near': 0.2578125, 'dev_acc_far': 0.25390625, 'dev_acc_mixed': 0.2529296875}
+linear_K4_mixed s6305 step 3000 loss 0.050 dev {'step': 3000, 'seconds': 51.82453743999986, 'dev_acc_near': 0.984375, 'dev_acc_far': 0.9814453125, 'dev_acc_mixed': 0.984375}
+linear_K4_mixed s6305 step 4500 loss 0.029 dev {'step': 4500, 'seconds': 77.70322222100003, 'dev_acc_near': 0.9951171875, 'dev_acc_far': 0.9951171875, 'dev_acc_mixed': 0.994140625}
+linear_K4_mixed s6306 step 500 loss 2.329 dev {'step': 500, 'seconds': 8.5676854190001, 'dev_acc_near': 0.251953125, 'dev_acc_far': 0.24609375, 'dev_acc_mixed': 0.24609375}
+linear_K4_mixed s6306 step 1000 loss 1.558 dev {'step': 1000, 'seconds': 17.318109132000245, 'dev_acc_near': 0.2529296875, 'dev_acc_far': 0.255859375, 'dev_acc_mixed': 0.2548828125}
+linear_K4_mixed s6306 step 1500 loss 1.540 dev {'step': 1500, 'seconds': 26.086084007999943, 'dev_acc_near': 0.2783203125, 'dev_acc_far': 0.236328125, 'dev_acc_mixed': 0.26171875}
+linear_K4_mixed s6306 step 2000 loss 1.091 dev {'step': 2000, 'seconds': 34.834187533000204, 'dev_acc_near': 0.533203125, 'dev_acc_far': 0.5068359375, 'dev_acc_mixed': 0.5185546875}
+linear_K4_mixed s6306 step 3000 loss 0.041 dev {'step': 3000, 'seconds': 52.19564302300023, 'dev_acc_near': 0.978515625, 'dev_acc_far': 0.986328125, 'dev_acc_mixed': 0.986328125}
+linear_K4_mixed s6306 step 4500 loss 0.006 dev {'step': 4500, 'seconds': 78.17104065600006, 'dev_acc_near': 0.9951171875, 'dev_acc_far': 0.9951171875, 'dev_acc_mixed': 0.9931640625}
+linear_K8_mixed s6304 step 500 loss 4.167 dev {'step': 500, 'seconds': 8.608698207999623, 'dev_acc_near': 0.021484375, 'dev_acc_far': 0.01513671875, 'dev_acc_mixed': 0.01708984375}
+linear_K8_mixed s6304 step 1000 loss 2.491 dev {'step': 1000, 'seconds': 17.4984995359996, 'dev_acc_near': 0.1171875, 'dev_acc_far': 0.126953125, 'dev_acc_mixed': 0.1142578125}
+linear_K8_mixed s6304 step 1500 loss 2.296 dev {'step': 1500, 'seconds': 26.728085604999706, 'dev_acc_near': 0.140625, 'dev_acc_far': 0.1298828125, 'dev_acc_mixed': 0.123046875}
+linear_K8_mixed s6304 step 2000 loss 2.193 dev {'step': 2000, 'seconds': 36.40039119699986, 'dev_acc_near': 0.1376953125, 'dev_acc_far': 0.1318359375, 'dev_acc_mixed': 0.13037109375}
+linear_K8_mixed s6304 step 3000 loss 0.020 dev {'step': 3000, 'seconds': 54.78301373999966, 'dev_acc_near': 0.9912109375, 'dev_acc_far': 0.9912109375, 'dev_acc_mixed': 0.99560546875}
+linear_K8_mixed s6304 step 4500 loss 0.014 dev {'step': 4500, 'seconds': 81.20910355999968, 'dev_acc_near': 0.9970703125, 'dev_acc_far': 0.9990234375, 'dev_acc_mixed': 0.99853515625}
+linear_K8_mixed s6305 step 500 loss 4.154 dev {'step': 500, 'seconds': 8.744934094999735, 'dev_acc_near': 0.02783203125, 'dev_acc_far': 0.0234375, 'dev_acc_mixed': 0.02197265625}
+linear_K8_mixed s6305 step 1000 loss 2.395 dev {'step': 1000, 'seconds': 17.83450955499984, 'dev_acc_near': 0.123046875, 'dev_acc_far': 0.12890625, 'dev_acc_mixed': 0.11083984375}
+linear_K8_mixed s6305 step 1500 loss 2.244 dev {'step': 1500, 'seconds': 27.14956750500005, 'dev_acc_near': 0.125, 'dev_acc_far': 0.1220703125, 'dev_acc_mixed': 0.109375}
+linear_K8_mixed s6305 step 2000 loss 2.179 dev {'step': 2000, 'seconds': 36.42752990400004, 'dev_acc_near': 0.1201171875, 'dev_acc_far': 0.1279296875, 'dev_acc_mixed': 0.12353515625}
+linear_K8_mixed s6305 step 3000 loss 2.151 dev {'step': 3000, 'seconds': 54.357620232000045, 'dev_acc_near': 0.119140625, 'dev_acc_far': 0.12451171875, 'dev_acc_mixed': 0.13037109375}
+linear_K8_mixed s6305 step 4500 loss 2.117 dev {'step': 4500, 'seconds': 80.86015148699971, 'dev_acc_near': 0.130859375, 'dev_acc_far': 0.14208984375, 'dev_acc_mixed': 0.12744140625}
+linear_K8_mixed s6306 step 500 loss 4.166 dev {'step': 500, 'seconds': 8.853534065000076, 'dev_acc_near': 0.02197265625, 'dev_acc_far': 0.01708984375, 'dev_acc_mixed': 0.021484375}
+linear_K8_mixed s6306 step 1000 loss 2.276 dev {'step': 1000, 'seconds': 17.98502093299976, 'dev_acc_near': 0.12255859375, 'dev_acc_far': 0.1220703125, 'dev_acc_mixed': 0.1181640625}
+linear_K8_mixed s6306 step 1500 loss 2.215 dev {'step': 1500, 'seconds': 27.148013885999717, 'dev_acc_near': 0.1318359375, 'dev_acc_far': 0.12939453125, 'dev_acc_mixed': 0.13525390625}
+linear_K8_mixed s6306 step 2000 loss 2.133 dev {'step': 2000, 'seconds': 36.25696154499974, 'dev_acc_near': 0.14013671875, 'dev_acc_far': 0.14453125, 'dev_acc_mixed': 0.14501953125}
+linear_K8_mixed s6306 step 3000 loss 0.850 dev {'step': 3000, 'seconds': 54.138143383999704, 'dev_acc_near': 0.69140625, 'dev_acc_far': 0.70458984375, 'dev_acc_mixed': 0.685546875}
+linear_K8_mixed s6306 step 4500 loss 0.109 dev {'step': 4500, 'seconds': 80.87117452299981, 'dev_acc_near': 0.97900390625, 'dev_acc_far': 0.978515625, 'dev_acc_mixed': 0.97802734375}
+linear_K16_mixed s6304 step 500 loss 4.161 dev {'step': 500, 'seconds': 8.953618446999826, 'dev_acc_near': 0.016357421875, 'dev_acc_far': 0.015380859375, 'dev_acc_mixed': 0.013671875}
+linear_K16_mixed s6304 step 1000 loss 3.493 dev {'step': 1000, 'seconds': 18.104928253999788, 'dev_acc_near': 0.06298828125, 'dev_acc_far': 0.060546875, 'dev_acc_mixed': 0.059814453125}
+linear_K16_mixed s6304 step 1500 loss 3.102 dev {'step': 1500, 'seconds': 27.315513037999608, 'dev_acc_near': 0.062255859375, 'dev_acc_far': 0.058837890625, 'dev_acc_mixed': 0.060546875}
+linear_K16_mixed s6304 step 2000 loss 2.928 dev {'step': 2000, 'seconds': 36.487572995999926, 'dev_acc_near': 0.0654296875, 'dev_acc_far': 0.057861328125, 'dev_acc_mixed': 0.0595703125}
+linear_K16_mixed s6304 step 3000 loss 2.838 dev {'step': 3000, 'seconds': 54.60335146699981, 'dev_acc_near': 0.06298828125, 'dev_acc_far': 0.059326171875, 'dev_acc_mixed': 0.061767578125}
+linear_K16_mixed s6304 step 4500 loss 2.169 dev {'step': 4500, 'seconds': 81.63594999199995, 'dev_acc_near': 0.320068359375, 'dev_acc_far': 0.33154296875, 'dev_acc_mixed': 0.33935546875}
+linear_K16_mixed s6305 step 500 loss 4.163 dev {'step': 500, 'seconds': 8.843318085000192, 'dev_acc_near': 0.01513671875, 'dev_acc_far': 0.016357421875, 'dev_acc_mixed': 0.015625}
+linear_K16_mixed s6305 step 1000 loss 3.426 dev {'step': 1000, 'seconds': 17.93982280599994, 'dev_acc_near': 0.06396484375, 'dev_acc_far': 0.062744140625, 'dev_acc_mixed': 0.056640625}
+linear_K16_mixed s6305 step 1500 loss 3.169 dev {'step': 1500, 'seconds': 27.10832018200017, 'dev_acc_near': 0.064453125, 'dev_acc_far': 0.065673828125, 'dev_acc_mixed': 0.06005859375}
+linear_K16_mixed s6305 step 2000 loss 2.980 dev {'step': 2000, 'seconds': 36.33674088299995, 'dev_acc_near': 0.06591796875, 'dev_acc_far': 0.068603515625, 'dev_acc_mixed': 0.062744140625}
+linear_K16_mixed s6305 step 3000 loss 2.272 dev {'step': 3000, 'seconds': 54.53652791800005, 'dev_acc_near': 0.2900390625, 'dev_acc_far': 0.296630859375, 'dev_acc_mixed': 0.30078125}
+linear_K16_mixed s6305 step 4500 loss 0.036 dev {'step': 4500, 'seconds': 81.46019364099993, 'dev_acc_near': 0.993408203125, 'dev_acc_far': 0.994873046875, 'dev_acc_mixed': 0.9951171875}
+linear_K16_mixed s6306 step 500 loss 4.166 dev {'step': 500, 'seconds': 8.85623031499972, 'dev_acc_near': 0.018798828125, 'dev_acc_far': 0.015625, 'dev_acc_mixed': 0.01513671875}
+linear_K16_mixed s6306 step 1000 loss 3.424 dev {'step': 1000, 'seconds': 17.991602896999666, 'dev_acc_near': 0.067626953125, 'dev_acc_far': 0.061767578125, 'dev_acc_mixed': 0.06640625}
+linear_K16_mixed s6306 step 1500 loss 3.130 dev {'step': 1500, 'seconds': 27.206679116000032, 'dev_acc_near': 0.066162109375, 'dev_acc_far': 0.062744140625, 'dev_acc_mixed': 0.065673828125}
+linear_K16_mixed s6306 step 2000 loss 2.954 dev {'step': 2000, 'seconds': 36.42585446899966, 'dev_acc_near': 0.066162109375, 'dev_acc_far': 0.06787109375, 'dev_acc_mixed': 0.059326171875}
+linear_K16_mixed s6306 step 3000 loss 2.844 dev {'step': 3000, 'seconds': 54.533316205999654, 'dev_acc_near': 0.075439453125, 'dev_acc_far': 0.06884765625, 'dev_acc_mixed': 0.068603515625}
+linear_K16_mixed s6306 step 4500 loss 0.018 dev {'step': 4500, 'seconds': 81.44029585399994, 'dev_acc_near': 0.99462890625, 'dev_acc_far': 0.99462890625, 'dev_acc_mixed': 0.992431640625}
+dilated_K4_mixed s6304 step 500 loss 3.421 dev {'step': 500, 'seconds': 8.186772328000188, 'dev_acc_near': 0.2265625, 'dev_acc_far': 0.2158203125, 'dev_acc_mixed': 0.2099609375}
+dilated_K4_mixed s6304 step 1000 loss 2.044 dev {'step': 1000, 'seconds': 16.471029196000018, 'dev_acc_near': 0.275390625, 'dev_acc_far': 0.2470703125, 'dev_acc_mixed': 0.2470703125}
+dilated_K4_mixed s6304 step 1500 loss 2.026 dev {'step': 1500, 'seconds': 24.715199960000064, 'dev_acc_near': 0.271484375, 'dev_acc_far': 0.2451171875, 'dev_acc_mixed': 0.2529296875}
+dilated_K4_mixed s6304 step 2000 loss 1.690 dev {'step': 2000, 'seconds': 32.96876052400012, 'dev_acc_near': 0.265625, 'dev_acc_far': 0.2451171875, 'dev_acc_mixed': 0.251953125}
+dilated_K4_mixed s6304 step 3000 loss 1.592 dev {'step': 3000, 'seconds': 49.28817341000013, 'dev_acc_near': 0.2763671875, 'dev_acc_far': 0.2783203125, 'dev_acc_mixed': 0.2607421875}
+dilated_K4_mixed s6304 step 4500 loss 1.498 dev {'step': 4500, 'seconds': 73.66102838400002, 'dev_acc_near': 0.271484375, 'dev_acc_far': 0.2724609375, 'dev_acc_mixed': 0.275390625}
+dilated_K4_mixed s6305 step 500 loss 3.085 dev {'step': 500, 'seconds': 8.07410289399968, 'dev_acc_near': 0.255859375, 'dev_acc_far': 0.2421875, 'dev_acc_mixed': 0.255859375}
+dilated_K4_mixed s6305 step 1000 loss 1.985 dev {'step': 1000, 'seconds': 16.31224935099999, 'dev_acc_near': 0.2548828125, 'dev_acc_far': 0.259765625, 'dev_acc_mixed': 0.251953125}
+dilated_K4_mixed s6305 step 1500 loss 1.836 dev {'step': 1500, 'seconds': 24.54841706399975, 'dev_acc_near': 0.2529296875, 'dev_acc_far': 0.2783203125, 'dev_acc_mixed': 0.2607421875}
+dilated_K4_mixed s6305 step 2000 loss 1.799 dev {'step': 2000, 'seconds': 32.79512280799963, 'dev_acc_near': 0.2568359375, 'dev_acc_far': 0.2666015625, 'dev_acc_mixed': 0.263671875}
+dilated_K4_mixed s6305 step 3000 loss 1.529 dev {'step': 3000, 'seconds': 49.15494556399972, 'dev_acc_near': 0.279296875, 'dev_acc_far': 0.2802734375, 'dev_acc_mixed': 0.302734375}
+dilated_K4_mixed s6305 step 4500 loss 1.277 dev {'step': 4500, 'seconds': 73.58651566799972, 'dev_acc_near': 0.4560546875, 'dev_acc_far': 0.4404296875, 'dev_acc_mixed': 0.427734375}
+dilated_K4_mixed s6306 step 500 loss 3.265 dev {'step': 500, 'seconds': 8.075318609999613, 'dev_acc_near': 0.2490234375, 'dev_acc_far': 0.2216796875, 'dev_acc_mixed': 0.23828125}
+dilated_K4_mixed s6306 step 1000 loss 2.144 dev {'step': 1000, 'seconds': 16.320313153999905, 'dev_acc_near': 0.2841796875, 'dev_acc_far': 0.2529296875, 'dev_acc_mixed': 0.2470703125}
+dilated_K4_mixed s6306 step 1500 loss 1.910 dev {'step': 1500, 'seconds': 24.558023620999847, 'dev_acc_near': 0.2724609375, 'dev_acc_far': 0.248046875, 'dev_acc_mixed': 0.2568359375}
+dilated_K4_mixed s6306 step 2000 loss 1.688 dev {'step': 2000, 'seconds': 32.79943570899968, 'dev_acc_near': 0.2802734375, 'dev_acc_far': 0.265625, 'dev_acc_mixed': 0.265625}
+dilated_K4_mixed s6306 step 3000 loss 1.545 dev {'step': 3000, 'seconds': 49.16809908399955, 'dev_acc_near': 0.2890625, 'dev_acc_far': 0.2763671875, 'dev_acc_mixed': 0.2998046875}
+dilated_K4_mixed s6306 step 4500 loss 1.180 dev {'step': 4500, 'seconds': 73.64928513599989, 'dev_acc_near': 0.5634765625, 'dev_acc_far': 0.47265625, 'dev_acc_mixed': 0.4775390625}
+dilated_K16_mixed s6304 step 500 loss 4.161 dev {'step': 500, 'seconds': 8.183723451999867, 'dev_acc_near': 0.017333984375, 'dev_acc_far': 0.0146484375, 'dev_acc_mixed': 0.013671875}
+dilated_K16_mixed s6304 step 1000 loss 3.900 dev {'step': 1000, 'seconds': 16.50549769400004, 'dev_acc_near': 0.068115234375, 'dev_acc_far': 0.067138671875, 'dev_acc_mixed': 0.066162109375}
+dilated_K16_mixed s6304 step 1500 loss 3.741 dev {'step': 1500, 'seconds': 24.822295825999845, 'dev_acc_near': 0.06591796875, 'dev_acc_far': 0.06201171875, 'dev_acc_mixed': 0.060302734375}
+dilated_K16_mixed s6304 step 2000 loss 3.593 dev {'step': 2000, 'seconds': 33.151028834000044, 'dev_acc_near': 0.063232421875, 'dev_acc_far': 0.067626953125, 'dev_acc_mixed': 0.060791015625}
+dilated_K16_mixed s6304 step 3000 loss 3.417 dev {'step': 3000, 'seconds': 49.65823506600009, 'dev_acc_near': 0.065673828125, 'dev_acc_far': 0.060546875, 'dev_acc_mixed': 0.065673828125}
+dilated_K16_mixed s6304 step 4500 loss 3.216 dev {'step': 4500, 'seconds': 74.36129478400017, 'dev_acc_near': 0.06494140625, 'dev_acc_far': 0.0615234375, 'dev_acc_mixed': 0.064697265625}
+dilated_K16_mixed s6305 step 500 loss 4.163 dev {'step': 500, 'seconds': 8.146376153000347, 'dev_acc_near': 0.01416015625, 'dev_acc_far': 0.016357421875, 'dev_acc_mixed': 0.01611328125}
+dilated_K16_mixed s6305 step 1000 loss 3.897 dev {'step': 1000, 'seconds': 16.463919163000355, 'dev_acc_near': 0.066650390625, 'dev_acc_far': 0.061767578125, 'dev_acc_mixed': 0.062744140625}
+dilated_K16_mixed s6305 step 1500 loss 3.723 dev {'step': 1500, 'seconds': 24.822859890000018, 'dev_acc_near': 0.06787109375, 'dev_acc_far': 0.061279296875, 'dev_acc_mixed': 0.062744140625}
+dilated_K16_mixed s6305 step 2000 loss 3.568 dev {'step': 2000, 'seconds': 33.16078054500031, 'dev_acc_near': 0.068359375, 'dev_acc_far': 0.06591796875, 'dev_acc_mixed': 0.064208984375}
+dilated_K16_mixed s6305 step 3000 loss 3.345 dev {'step': 3000, 'seconds': 49.75949444600019, 'dev_acc_near': 0.069580078125, 'dev_acc_far': 0.063720703125, 'dev_acc_mixed': 0.063720703125}
+dilated_K16_mixed s6305 step 4500 loss 3.185 dev {'step': 4500, 'seconds': 74.62169918100017, 'dev_acc_near': 0.067138671875, 'dev_acc_far': 0.0625, 'dev_acc_mixed': 0.0576171875}
+dilated_K16_mixed s6306 step 500 loss 4.166 dev {'step': 500, 'seconds': 8.201135023999996, 'dev_acc_near': 0.018310546875, 'dev_acc_far': 0.015380859375, 'dev_acc_mixed': 0.015380859375}
+dilated_K16_mixed s6306 step 1000 loss 3.884 dev {'step': 1000, 'seconds': 16.55827350899972, 'dev_acc_near': 0.07177734375, 'dev_acc_far': 0.06591796875, 'dev_acc_mixed': 0.061767578125}
+dilated_K16_mixed s6306 step 1500 loss 3.705 dev {'step': 1500, 'seconds': 24.877438686999994, 'dev_acc_near': 0.068115234375, 'dev_acc_far': 0.058349609375, 'dev_acc_mixed': 0.062255859375}
+dilated_K16_mixed s6306 step 2000 loss 3.520 dev {'step': 2000, 'seconds': 33.19095215899961, 'dev_acc_near': 0.0693359375, 'dev_acc_far': 0.063232421875, 'dev_acc_mixed': 0.064208984375}
+dilated_K16_mixed s6306 step 3000 loss 3.378 dev {'step': 3000, 'seconds': 49.725692772, 'dev_acc_near': 0.072509765625, 'dev_acc_far': 0.056640625, 'dev_acc_mixed': 0.066162109375}
+dilated_K16_mixed s6306 step 4500 loss 3.225 dev {'step': 4500, 'seconds': 74.55281393799987, 'dev_acc_near': 0.069091796875, 'dev_acc_far': 0.058837890625, 'dev_acc_mixed': 0.06298828125}

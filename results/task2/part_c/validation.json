@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "torch": "2.11.0+cu130",
+  "device": "Tesla T4",
+  "n_layers": 28,
+  "h_kv": 2,
+  "d_h": 128,
+  "group": 64,
+  "sink": 8,
+  "recent": 64,
+  "pool_kernel": 7,
+  "max_new_tokens": 12,
+  "attention_backend": "sdpa",
+  "dtype": "fp16"
+ },
+ "rows": [
+  {
+   "id": "KV-2048-start-0-00",
+   "L_ctx": 2633,
+   "split_vs_direct_max_abs_logit": 0.08203125,
+   "argmax_agree": 1.0,
+   "all_finite": true,
+   "generate_text": "26836",
+   "pipeline_text": "26836",
+   "full_retention_reproduces_generate": true
+  },
+  {
+   "id": "KV-2048-start-2-00",
+   "L_ctx": 2639,
+   "split_vs_direct_max_abs_logit": 0.09375,
+   "argmax_agree": 1.0,
+   "all_finite": true,
+   "generate_text": "68251",
+   "pipeline_text": "68251",
+   "full_retention_reproduces_generate": true
+  },
+  {
+   "id": "KV-2048-start-8-00",
+   "L_ctx": 2607,
+   "split_vs_direct_max_abs_logit": 0.078125,
+   "argmax_agree": 1.0,
+   "all_finite": true,
+   "generate_text": "67030",
+   "pipeline_text": "67030",
+   "full_retention_reproduces_generate": true
+  },
+  {
+   "id": "KV-2048-middle-0-00",
+   "L_ctx": 2642,
+   "split_vs_direct_max_abs_logit": 0.09375,
+   "argmax_agree": 1.0,
+   "all_finite": true,
+   "generate_text": "32056",
+   "pipeline_text": "32056",
+   "full_retention_reproduces_generate": true
+  },
+  {
+   "id": "KV-2048-middle-2-00",
+   "L_ctx": 2635,
+   "split_vs_direct_max_abs_logit": 0.1328125,
+   "argmax_agree": 1.0,
+   "all_finite": true,
+   "generate_text": "49115",
+   "pipeline_text": "49115",
+   "full_retention_reproduces_generate": true
+  },
+  {
+   "id": "KV-2048-middle-8-00",
+   "L_ctx": 2613,
+   "split_vs_direct_max_abs_logit": 0.14453125,
+   "argmax_agree": 1.0,
+   "all_finite": true,
+   "generate_text": "84561",
+   "pipeline_text": "84561",
+   "full_retention_reproduces_generate": true
+  }
+ ]
+}

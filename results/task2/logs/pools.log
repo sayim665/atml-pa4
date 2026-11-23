@@ -1,0 +1,7 @@
+generator invariant checks passed on 9216 test-stream examples
+pool K=4 mixed: 144000 examples in 50s
+pool K=4 near: 144000 examples in 34s
+pool K=8 mixed: 144000 examples in 75s
+pool K=8 near: 144000 examples in 43s
+pool K=16 mixed: 144000 examples in 126s
+pool K=16 near: 144000 examples in 61s

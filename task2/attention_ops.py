@@ -69,8 +69,9 @@ def sdpa_attention(q, k, v):
 def sdpa_backend_name(q, k, v):
     """Backend PyTorch's dispatcher selects for these tensors (private API; returns 'unknown' if absent)."""
     try:
-        choice = torch._fused_sdp_choice(q, k, v, None, 0.0, True)
-        names = {int(b): b.name for b in torch.nn.attention.SDPBackend}
+        choice = torch._fused_sdp_choice(q, k, v, attn_mask=None, dropout_p=0.0, is_causal=True)
+        members = torch.nn.attention.SDPBackend.__members__     # pybind enum: not iterable directly
+        names = {int(v): k for k, v in members.items()}
         return names.get(int(choice), str(choice))
     except Exception as exc:  # noqa: BLE001
         return f"unknown ({type(exc).__name__})"

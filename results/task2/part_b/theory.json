@@ -1,0 +1,42 @@
+{
+ "T": 256,
+ "heads": 4,
+ "head_dim": 32,
+ "attended_pairs_per_layer": {
+  "dense": 131584,
+  "window": 57472,
+  "dilated": 45376,
+  "linear": "n/a (recurrent; T state updates)",
+  "hybrid": 15840
+ },
+ "mean_positions_per_query": {
+  "dense": 128.5,
+  "window": 56.125,
+  "dilated_local_heads": 56.125,
+  "dilated_dilated_heads": 32.5,
+  "hybrid_local_heads": 30.9375
+ },
+ "two_layer_receptive_field": {
+  "dense": 255,
+  "window": 126,
+  "dilated": 504,
+  "linear": 255,
+  "hybrid": 255
+ },
+ "state_bytes_per_layer_at_T": {
+  "dense_kv_fp16": 131072,
+  "window_kv_fp16": 32768,
+  "dilated_kv_fp16": 81152,
+  "linear_fp32": 16896,
+  "hybrid": {
+   "linear_heads_fp32": 8448,
+   "local_kv_buffer_fp16": 8448,
+   "total": 16896
+  }
+ },
+ "notes": [
+  "dilated heads keep a 253-position FP16 history to cover offsets up to 252",
+  "masked variants are executed with explicit dense boolean masks (correctness implementation)",
+  "linear attention is trained in its masked quadratic form; the recurrent form is used in the sweep"
+ ]
+}
