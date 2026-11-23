@@ -27,9 +27,9 @@ par "python -u -m task3.evaluate --stage spec --drafts original off_s6304 on_s63
     "python -u -m task3.evaluate --stage spec --drafts off_s6305 on_s6305; python -u -m task3.evaluate --stage costs" spec
 
 mkdir -p /kaggle/working/results/task3/adapters
-for d in "$PA4_OUT"/adapters/*/; do
+for d in "$PA4_OUT"/task3/adapters/*/; do
   n=$(basename "$d"); mkdir -p "/kaggle/working/results/task3/adapters/$n"
   cp "$d"/summary.json "$d"/updates.json "$d"/presentations.jsonl "/kaggle/working/results/task3/adapters/$n/"
 done
-cp "$PA4_OUT"/teacher_collection_meta.json /kaggle/working/results/task3/ || true
+cp "$PA4_OUT"/task3/teacher_collection_meta.json /kaggle/working/results/task3/ || true
 cd /kaggle/working && zip -qr task3_results.zip results/task3 logs/task3 && ls -la task3_results.zip

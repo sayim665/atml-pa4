@@ -124,6 +124,31 @@ print('PA4_DATA =', data[0]); print(open(os.path.join(data[0], 'local_source_rev
     ]
 
 
+# CPU notebook: attach the atml-pa4-task3-runner output and repackage it (the v1 run's final copy step had a
+# wrong adapter path, so its zip was never written; all stages had exited 0).
+TASK3_COLLECT = [
+    r"""
+import glob, os, shutil, subprocess
+src = [os.path.dirname(os.path.dirname(p)) for p in glob.glob('/kaggle/input/**/results/task3', recursive=True)]
+assert src, 'attach the atml-pa4-task3-runner output as an input'
+src = src[0]; print('source', src)
+dst = '/kaggle/working/pkg'
+shutil.copytree(f'{src}/results/task3', f'{dst}/results/task3')
+shutil.copytree(f'{src}/logs/task3', f'{dst}/logs/task3')
+out3 = f'{src}/task3_out/task3'
+for d in sorted(glob.glob(f'{out3}/adapters/*/')):
+    n = os.path.basename(d.rstrip('/')); os.makedirs(f'{dst}/results/task3/adapters/{n}', exist_ok=True)
+    for f in ['summary.json', 'updates.json', 'presentations.jsonl']:
+        if os.path.exists(d + f): shutil.copy(d + f, f'{dst}/results/task3/adapters/{n}/')
+if os.path.exists(f'{out3}/teacher_collection_meta.json'):
+    shutil.copy(f'{out3}/teacher_collection_meta.json', f'{dst}/results/task3/')
+print(subprocess.run('cd /kaggle/working/pkg && zip -qr /kaggle/working/task3_results.zip results logs && '
+                     'ls -la /kaggle/working/task3_results.zip && du -ah {} | sort -h | tail -40'.format(out3),
+                     shell=True, capture_output=True, text=True).stdout)
+""",
+]
+
+
 def main():
     import sys
     commit = sys.argv[1] if len(sys.argv) > 1 else "main"
