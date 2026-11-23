@@ -127,7 +127,8 @@ print('PA4_DATA =', data[0]); print(open(os.path.join(data[0], 'local_source_rev
 def main():
     import sys
     commit = sys.argv[1] if len(sys.argv) > 1 else "main"
-    for name, cells in [("pa4_data_setup.ipynb", DATA_SETUP), ("task1_runner.ipynb", runner("task1", commit))]:
+    for name, cells in [("pa4_data_setup.ipynb", DATA_SETUP), ("task1_runner.ipynb", runner("task1", commit)),
+                        ("task2_runner.ipynb", runner("task2", commit))]:
         out = HERE / name
         out.write_text(json.dumps(make_notebook(cells), indent=1), encoding="utf-8")
         print("wrote", out)
