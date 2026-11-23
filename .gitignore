@@ -1,6 +1,5 @@
-﻿outputs/
+outputs/
 data/
 __pycache__/
 *.pt
 *.safetensors
-

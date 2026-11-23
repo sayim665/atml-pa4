@@ -57,6 +57,17 @@ print('course data repo commit:', commit)
 !python -u scripts/setup_data.py --public
 """,
     r"""
+# The course script passes generator= to model.generate, which transformers 4.57.1 rejects
+# ("model_kwargs are not used by the model: ['generator']"). Patch: seed the global torch RNG with the
+# same per-prompt seed immediately before generate (same seed values, documented deviation).
+src = open('scripts/setup_data.py').read()
+old_gen = "gen=torch.Generator(device='cuda').manual_seed("
+assert old_gen in src and "generator=gen," in src
+src = src.replace(old_gen, "gen=torch.manual_seed(").replace("generator=gen,", "")
+open('scripts/setup_data.py', 'w').write(src)
+!grep -n "manual_seed" scripts/setup_data.py
+""",
+    r"""
 # Teacher + original-draft prefix banks (GPU)
 !python -u scripts/setup_data.py --prefix-banks
 """,
@@ -88,10 +99,38 @@ print(json.dumps(env, indent=2))
 ]
 
 
+def runner(task, commit):
+    return [
+        rf"""
+# PA4 {task} runner (Kaggle GPU T4 x2, Internet ON). Input: the atml-pa4-data-setup notebook output.
+!nvidia-smi --query-gpu=name,memory.total --format=csv
+!pip install -q "transformers==4.57.1" "huggingface_hub==0.36.2" "datasets>=3,<5"
+""",
+        rf"""
+import glob, os, subprocess
+os.chdir('/kaggle/working')
+if not os.path.exists('atml-pa4'):
+    subprocess.run(['git', 'clone', '-q', 'https://github.com/sayim665/atml-pa4.git'], check=True)
+subprocess.run(['git', '-C', 'atml-pa4', 'checkout', '-q', '{commit}'], check=True)
+print('code commit:', subprocess.run(['git', '-C', 'atml-pa4', 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout)
+data = [p for p in glob.glob('/kaggle/input/**/pa4_data', recursive=True) if os.path.isdir(p)]
+assert data, 'attach the atml-pa4-data-setup output as an input'
+os.environ['PA4_DATA'] = data[0]
+print('PA4_DATA =', data[0]); print(open(os.path.join(data[0], 'local_source_revisions.json')).read())
+""",
+        rf"""
+!bash /kaggle/working/atml-pa4/kaggle/{task}_run.sh
+""",
+    ]
+
+
 def main():
-    out = HERE / "pa4_data_setup.ipynb"
-    out.write_text(json.dumps(make_notebook(DATA_SETUP), indent=1), encoding="utf-8")
-    print("wrote", out)
+    import sys
+    commit = sys.argv[1] if len(sys.argv) > 1 else "main"
+    for name, cells in [("pa4_data_setup.ipynb", DATA_SETUP), ("task1_runner.ipynb", runner("task1", commit))]:
+        out = HERE / name
+        out.write_text(json.dumps(make_notebook(cells), indent=1), encoding="utf-8")
+        print("wrote", out)
 
 
 if __name__ == "__main__":
