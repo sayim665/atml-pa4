@@ -1,0 +1,8 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795448419.768812      79 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+KV-2048-start-8-00 {'full': True, 'sink_recent': False, 'question_aware': True, 'int4_kivi': True, 'hybrid': True}
+KV-2048-middle-8-00 {'full': True, 'sink_recent': False, 'question_aware': True, 'int4_kivi': True, 'hybrid': True}
+KV-2048-end-8-00 {'full': True, 'sink_recent': True, 'question_aware': True, 'int4_kivi': True, 'hybrid': True}
+KV-4096-start-8-00 {'full': True, 'sink_recent': False, 'question_aware': True, 'int4_kivi': True, 'hybrid': True}
+KV-4096-middle-8-00 {'full': True, 'sink_recent': False, 'question_aware': True, 'int4_kivi': True, 'hybrid': True}
+KV-4096-end-8-00 {'full': True, 'sink_recent': True, 'question_aware': True, 'int4_kivi': True, 'hybrid': True}
