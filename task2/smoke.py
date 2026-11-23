@@ -78,6 +78,9 @@ def main():
     full = next(r for r in rows if r["policy"] == "full")
     kivi = next(r for r in rows if r["policy"] == "int4_kivi")
     assert kivi["stored_bytes"] == full["budget_bytes"]
+    sel = kv.selections(model, tok, geo, cases[:1])
+    assert sel and "kept_positions" not in str(sel[0]["policies"]["full"]) and sel[0]["policies"]["question_aware"]["kept_runs"]
+    print("selections ok", {k: v.get("evidence_retained") for k, v in sel[0]["policies"].items()})
     geo_small = kv.Geometry(model)
     pack = kv.pack_benchmark(model, geo_small)
     assert all(r["serialized_bytes"] == r["formula_bytes"] for r in pack), pack

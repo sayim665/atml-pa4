@@ -12,7 +12,7 @@ Pipeline per prompt: prefill the pre-question context (FP16) -> [score] -> compr
 prefill the question suffix on the compressed cache (FP16 suffix) -> greedy decode. Generated / suffix tokens
 are stored FP16 and, for INT4 layouts, quantized whenever the FP16 tail completes a 64-token group.
 
-python -m task2.kv --stage validate | run | pack
+python -m task2.kv --stage validate | run | pack | keystats | selections
 """
 import argparse
 import gzip
@@ -36,6 +36,7 @@ GROUP, SINK, RECENT, POOL_KERNEL = 64, 8, 64, 7
 MAX_NEW = 12
 POLICIES = ("full", "sink_recent", "question_aware", "int4_token", "int4_kivi", "hybrid")
 SEED = 6304
+RECORD_KEEP = False          # set by the selections stage: store the retained FP16 position list per policy
 
 
 def sync():
@@ -290,6 +291,8 @@ def run_policy(model, geo, prep, full_kv, policy, scores, ref_logits, tok):
         ev = set(prep["evidence"])
         rec["evidence_retained_fp16"] = len(ev & set(keep)) / len(ev)
         rec["n_fp16_positions"] = len(keep)
+        if RECORD_KEEP:
+            rec["kept_positions"] = list(keep)
     phys = cache_kv(cache)[0][0].shape[2]
     fp16_tail_start = (L // GROUP) * GROUP if quant_layout else None
 
@@ -529,9 +532,77 @@ def key_stats(model, tok, cases):
     return out
 
 
+def ranges(positions):
+    """Sorted positions -> list of [start, end) runs."""
+    out = []
+    for p in positions:
+        if out and p == out[-1][1]:
+            out[-1][1] = p + 1
+        else:
+            out.append([p, p + 1])
+    return out
+
+
+@torch.no_grad()
+def selections(model, tok, geo, cases, n_bins=96):
+    """Aligned generations for a fixed case set: evidence span, distractor records, and the FP16 positions kept by
+    each eviction / hybrid policy (as runs and as a binned mask)."""
+    global RECORD_KEEP
+    RECORD_KEEP = True
+    picks = []
+    for T in (2048, 4096):
+        for pos in ("start", "middle", "end"):
+            picks += [c for c in cases if c["target_tokens"] == T and c["position"] == pos and c["distractors"] == 8][:1]
+    if not picks:                                    # smoke subsets may lack the fixed cells
+        picks = cases[:1]
+    out = []
+    for case in picks:
+        prep = prepare(tok, case)
+        L = prep["split"]
+        text = tok.apply_chat_template([{"role": "user", "content": case["user_text"]}], tokenize=False,
+                                       add_generation_prompt=True)
+        offs = tok(text, add_special_tokens=False, return_offsets_mapping=True)["offset_mapping"]
+        user_off = text.index(case["user_text"])
+        ev = set(prep["evidence"])
+        distract = set()
+        for m in re.finditer(r"[^\n]*access code[^\n]*", case["user_text"]):
+            lo, hi = user_off + m.start(), user_off + m.end()
+            toks = {i for i, (s_, e_) in enumerate(offs[:L]) if s_ < hi and e_ > lo}
+            if not toks & ev:
+                distract |= toks
+        rows = run_case(model, tok, geo, case, policies=("full", "sink_recent", "question_aware", "int4_kivi", "hybrid"),
+                        with_errors=False)
+        rec = dict(id=case["id"], target_tokens=case["target_tokens"], position=case["position"],
+                   distractors=case["distractors"], code=case["code"], L_ctx=L,
+                   evidence_positions=sorted(ev), evidence_text=tok.decode([prep["ids"][i] for i in sorted(ev)]),
+                   distractor_positions=ranges(sorted(distract)), policies={})
+        for r in rows:
+            d = dict(output=r["output"], extracted=r["extracted"], correct=r["correct"],
+                     answer_nll=r["answer_nll"], kl_from_fp16=r.get("kl_from_fp16"),
+                     fraction_of_fp16=r["fraction_of_fp16"])
+            keep = r.get("kept_positions")
+            if keep is not None:
+                ks = set(keep)
+                d.update(n_kept=len(keep), kept_runs=ranges(keep),
+                         evidence_retained=len(ev & ks) / len(ev),
+                         distractor_retained=(len(distract & ks) / len(distract)) if distract else None,
+                         binned_mask=[sum(1 for i in range(b * L // n_bins, (b + 1) * L // n_bins) if i in ks) /
+                                      max(1, (b + 1) * L // n_bins - b * L // n_bins) for b in range(n_bins)])
+                safeguard = set(range(SINK)) | set(range(L - RECENT, L))
+                sel = [run for run in ranges(sorted(ks - safeguard)) if run[1] - run[0] >= 3]
+                sel.sort(key=lambda x: x[0] - x[1])
+                d["longest_selected_runs"] = [dict(start=a, end=b, text=tok.decode(prep["ids"][a:b])[:120])
+                                              for a, b in sel[:8]]
+            rec["policies"][r["policy"]] = d
+        out.append(rec)
+        print(case["id"], {k: v["correct"] for k, v in rec["policies"].items()}, flush=True)
+    RECORD_KEEP = False
+    return out
+
+
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--stage", choices=["validate", "run", "pack", "keystats"], required=True)
+    p.add_argument("--stage", choices=["validate", "run", "pack", "keystats", "selections"], required=True)
     p.add_argument("--shard", type=int, default=0)
     p.add_argument("--n-shards", type=int, default=1)
     a = p.parse_args()
@@ -549,6 +620,8 @@ def main():
         json.dump(dict(meta=meta, rows=validate(model, tok, geo, picks)), open(RES / "validation.json", "w"), indent=1)
     elif a.stage == "keystats":
         json.dump(dict(meta=meta, rows=key_stats(model, tok, cases)), open(RES / "key_stats.json", "w"), indent=1)
+    elif a.stage == "selections":
+        json.dump(dict(meta=meta, rows=selections(model, tok, geo, cases)), open(RES / "selections.json", "w"), indent=1)
     elif a.stage == "pack":
         json.dump(dict(meta=meta, rows=pack_benchmark(model, geo)), open(RES / "pack_benchmark.json", "w"), indent=1)
     else:
