@@ -1,0 +1,37 @@
+{
+ "method": "on",
+ "seed": 6305,
+ "updates": 136,
+ "skipped_updates": 8,
+ "presentations": 823,
+ "scored_tokens": {
+  "math": 30000,
+  "short": 10000
+ },
+ "adapter_params": 1081344,
+ "backbone_params": 494032768,
+ "lora": {
+  "r": 8,
+  "alpha": 16,
+  "dropout": 0,
+  "targets": [
+   "q_proj",
+   "k_proj",
+   "v_proj",
+   "o_proj"
+  ]
+ },
+ "mean_response_len": {
+  "math": 179.64071856287424,
+  "short": 15.24390243902439
+ },
+ "truncated": 307,
+ "seconds": 2323.146510772,
+ "cost_seconds": {
+  "teacher_scoring": 48.86684788599541,
+  "student_rollout": 2135.773727876992,
+  "backward_update": 137.35930074699672
+ },
+ "peak_allocated_bytes": 5564209152,
+ "update_rule": "step at the first response boundary with >= 256 accumulated teacher-scored tokens (gradients normalized by that update's token count)"
+}

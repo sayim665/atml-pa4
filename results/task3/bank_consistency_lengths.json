@@ -1,0 +1,18 @@
+{
+ "math": {
+  "mean_len_teacher": 178.45,
+  "mean_len_spec": 178.73333333333332,
+  "ended_before_cap_teacher": 0.21666666666666667,
+  "ended_before_cap_spec": 0.26666666666666666,
+  "ks_stat": 0.05,
+  "ks_p": 0.9999997074905671
+ },
+ "short": {
+  "mean_len_teacher": 30.883333333333333,
+  "mean_len_spec": 22.133333333333333,
+  "ended_before_cap_teacher": 0.95,
+  "ended_before_cap_spec": 0.9833333333333333,
+  "ks_stat": 0.13333333333333333,
+  "ks_p": 0.6647505590510205
+ }
+}

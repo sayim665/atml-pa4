@@ -1,0 +1,632 @@
+{
+ "toy": {
+  "exact": {
+   "chi2": 24.204946296296207,
+   "dof": 26,
+   "p_value": 0.5642473099763512,
+   "rejected_at_0_01": false,
+   "joint": [
+    {
+     "seq": [
+      0,
+      0,
+      0
+     ],
+     "exact": 0.18,
+     "empirical": 0.17982
+    },
+    {
+     "seq": [
+      0,
+      0,
+      1
+     ],
+     "exact": 0.09,
+     "empirical": 0.08936
+    },
+    {
+     "seq": [
+      0,
+      0,
+      2
+     ],
+     "exact": 0.03,
+     "empirical": 0.03015
+    },
+    {
+     "seq": [
+      0,
+      1,
+      0
+     ],
+     "exact": 0.03,
+     "empirical": 0.0303
+    },
+    {
+     "seq": [
+      0,
+      1,
+      1
+     ],
+     "exact": 0.075,
+     "empirical": 0.07538
+    },
+    {
+     "seq": [
+      0,
+      1,
+      2
+     ],
+     "exact": 0.045,
+     "empirical": 0.04473
+    },
+    {
+     "seq": [
+      0,
+      2,
+      0
+     ],
+     "exact": 0.015,
+     "empirical": 0.01445
+    },
+    {
+     "seq": [
+      0,
+      2,
+      1
+     ],
+     "exact": 0.015,
+     "empirical": 0.01494
+    },
+    {
+     "seq": [
+      0,
+      2,
+      2
+     ],
+     "exact": 0.020000000000000004,
+     "empirical": 0.02015
+    },
+    {
+     "seq": [
+      1,
+      0,
+      0
+     ],
+     "exact": 0.036,
+     "empirical": 0.03541
+    },
+    {
+     "seq": [
+      1,
+      0,
+      1
+     ],
+     "exact": 0.018,
+     "empirical": 0.01803
+    },
+    {
+     "seq": [
+      1,
+      0,
+      2
+     ],
+     "exact": 0.006,
+     "empirical": 0.00589
+    },
+    {
+     "seq": [
+      1,
+      1,
+      0
+     ],
+     "exact": 0.03,
+     "empirical": 0.0303
+    },
+    {
+     "seq": [
+      1,
+      1,
+      1
+     ],
+     "exact": 0.075,
+     "empirical": 0.07533
+    },
+    {
+     "seq": [
+      1,
+      1,
+      2
+     ],
+     "exact": 0.045,
+     "empirical": 0.04499
+    },
+    {
+     "seq": [
+      1,
+      2,
+      0
+     ],
+     "exact": 0.027,
+     "empirical": 0.02549
+    },
+    {
+     "seq": [
+      1,
+      2,
+      1
+     ],
+     "exact": 0.027,
+     "empirical": 0.0269
+    },
+    {
+     "seq": [
+      1,
+      2,
+      2
+     ],
+     "exact": 0.036,
+     "empirical": 0.03678
+    },
+    {
+     "seq": [
+      2,
+      0,
+      0
+     ],
+     "exact": 0.036,
+     "empirical": 0.03554
+    },
+    {
+     "seq": [
+      2,
+      0,
+      1
+     ],
+     "exact": 0.018,
+     "empirical": 0.01827
+    },
+    {
+     "seq": [
+      2,
+      0,
+      2
+     ],
+     "exact": 0.006,
+     "empirical": 0.00586
+    },
+    {
+     "seq": [
+      2,
+      1,
+      0
+     ],
+     "exact": 0.012,
+     "empirical": 0.01206
+    },
+    {
+     "seq": [
+      2,
+      1,
+      1
+     ],
+     "exact": 0.03,
+     "empirical": 0.02996
+    },
+    {
+     "seq": [
+      2,
+      1,
+      2
+     ],
+     "exact": 0.018,
+     "empirical": 0.01831
+    },
+    {
+     "seq": [
+      2,
+      2,
+      0
+     ],
+     "exact": 0.024000000000000004,
+     "empirical": 0.0244
+    },
+    {
+     "seq": [
+      2,
+      2,
+      1
+     ],
+     "exact": 0.024000000000000004,
+     "empirical": 0.02378
+    },
+    {
+     "seq": [
+      2,
+      2,
+      2
+     ],
+     "exact": 0.03200000000000001,
+     "empirical": 0.03342
+    }
+   ]
+  },
+  "replace_residual_with_p": {
+   "chi2": 16690.018833333335,
+   "dof": 26,
+   "p_value": 0.0,
+   "rejected_at_0_01": true,
+   "joint": [
+    {
+     "seq": [
+      0,
+      0,
+      0
+     ],
+     "exact": 0.18,
+     "empirical": 0.09038
+    },
+    {
+     "seq": [
+      0,
+      0,
+      1
+     ],
+     "exact": 0.09,
+     "empirical": 0.05872
+    },
+    {
+     "seq": [
+      0,
+      0,
+      2
+     ],
+     "exact": 0.03,
+     "empirical": 0.02469
+    },
+    {
+     "seq": [
+      0,
+      1,
+      0
+     ],
+     "exact": 0.03,
+     "empirical": 0.02974
+    },
+    {
+     "seq": [
+      0,
+      1,
+      1
+     ],
+     "exact": 0.075,
+     "empirical": 0.05324
+    },
+    {
+     "seq": [
+      0,
+      1,
+      2
+     ],
+     "exact": 0.045,
+     "empirical": 0.03997
+    },
+    {
+     "seq": [
+      0,
+      2,
+      0
+     ],
+     "exact": 0.015,
+     "empirical": 0.01226
+    },
+    {
+     "seq": [
+      0,
+      2,
+      1
+     ],
+     "exact": 0.015,
+     "empirical": 0.01852
+    },
+    {
+     "seq": [
+      0,
+      2,
+      2
+     ],
+     "exact": 0.020000000000000004,
+     "empirical": 0.02185
+    },
+    {
+     "seq": [
+      1,
+      0,
+      0
+     ],
+     "exact": 0.036,
+     "empirical": 0.05658
+    },
+    {
+     "seq": [
+      1,
+      0,
+      1
+     ],
+     "exact": 0.018,
+     "empirical": 0.0334
+    },
+    {
+     "seq": [
+      1,
+      0,
+      2
+     ],
+     "exact": 0.006,
+     "empirical": 0.01226
+    },
+    {
+     "seq": [
+      1,
+      1,
+      0
+     ],
+     "exact": 0.03,
+     "empirical": 0.03585
+    },
+    {
+     "seq": [
+      1,
+      1,
+      1
+     ],
+     "exact": 0.075,
+     "empirical": 0.06922
+    },
+    {
+     "seq": [
+      1,
+      1,
+      2
+     ],
+     "exact": 0.045,
+     "empirical": 0.05016
+    },
+    {
+     "seq": [
+      1,
+      2,
+      0
+     ],
+     "exact": 0.027,
+     "empirical": 0.03336
+    },
+    {
+     "seq": [
+      1,
+      2,
+      1
+     ],
+     "exact": 0.027,
+     "empirical": 0.04458
+    },
+    {
+     "seq": [
+      1,
+      2,
+      2
+     ],
+     "exact": 0.036,
+     "empirical": 0.05541
+    },
+    {
+     "seq": [
+      2,
+      0,
+      0
+     ],
+     "exact": 0.036,
+     "empirical": 0.02678
+    },
+    {
+     "seq": [
+      2,
+      0,
+      1
+     ],
+     "exact": 0.018,
+     "empirical": 0.01613
+    },
+    {
+     "seq": [
+      2,
+      0,
+      2
+     ],
+     "exact": 0.006,
+     "empirical": 0.00663
+    },
+    {
+     "seq": [
+      2,
+      1,
+      0
+     ],
+     "exact": 0.012,
+     "empirical": 0.02233
+    },
+    {
+     "seq": [
+      2,
+      1,
+      1
+     ],
+     "exact": 0.03,
+     "empirical": 0.04706
+    },
+    {
+     "seq": [
+      2,
+      1,
+      2
+     ],
+     "exact": 0.018,
+     "empirical": 0.03283
+    },
+    {
+     "seq": [
+      2,
+      2,
+      0
+     ],
+     "exact": 0.024000000000000004,
+     "empirical": 0.02734
+    },
+    {
+     "seq": [
+      2,
+      2,
+      1
+     ],
+     "exact": 0.024000000000000004,
+     "empirical": 0.03637
+    },
+    {
+     "seq": [
+      2,
+      2,
+      2
+     ],
+     "exact": 0.03200000000000001,
+     "empirical": 0.04434
+    }
+   ]
+  },
+  "n": 100000,
+  "gamma": 2,
+  "min_expected_count": 600.0
+ },
+ "revisions": {
+  "target": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "draft": "7ae557604adf67be50417f59c2c2f167def9a775"
+ },
+ "tokenizer_agreement": {
+  "n": 120,
+  "all_identical": true,
+  "vocab_target": 151665,
+  "vocab_draft": 151665
+ },
+ "disjoint": {
+  "train_math": 500,
+  "train_short": 300,
+  "test": 120,
+  "gsm8k_train_rows": 500,
+  "prompt_overlap": 0
+ },
+ "eos_ids": [
+  151643,
+  151645
+ ],
+ "split_prefill_max_abs_logit": 0.06787109375,
+ "cache_consistency": [
+  {
+   "gamma": 2,
+   "tokens": 48,
+   "rounds": 18,
+   "accepted": 30,
+   "examined": 34,
+   "bonus": 14,
+   "max_abs_logp_target": 0.01515817642211914,
+   "max_abs_logq_draft": 0.015291690826416016,
+   "finish": "length"
+  },
+  {
+   "gamma": 4,
+   "tokens": 48,
+   "rounds": 16,
+   "accepted": 32,
+   "examined": 41,
+   "bonus": 7,
+   "max_abs_logp_target": 0.013661623001098633,
+   "max_abs_logq_draft": 0.02767181396484375,
+   "finish": "length"
+  },
+  {
+   "gamma": 2,
+   "tokens": 48,
+   "rounds": 18,
+   "accepted": 30,
+   "examined": 33,
+   "bonus": 15,
+   "max_abs_logp_target": 0.023168087005615234,
+   "max_abs_logq_draft": 0.018230438232421875,
+   "finish": "length"
+  },
+  {
+   "gamma": 4,
+   "tokens": 48,
+   "rounds": 14,
+   "accepted": 34,
+   "examined": 43,
+   "bonus": 5,
+   "max_abs_logp_target": 0.014952659606933594,
+   "max_abs_logq_draft": 0.028644323348999023,
+   "finish": "length"
+  }
+ ],
+ "draft_equals_target": {
+  "examined": 19,
+  "accepted": 19,
+  "bonus": 5,
+  "rounds": 5
+ },
+ "truncation": [
+  {
+   "cap": 1,
+   "out_len": 1,
+   "finish": "length"
+  },
+  {
+   "cap": 2,
+   "out_len": 2,
+   "finish": "length"
+  },
+  {
+   "cap": 5,
+   "out_len": 5,
+   "finish": "length"
+  }
+ ],
+ "eos": [
+  {
+   "id": "SHORT-familiar-0000",
+   "finish": "eos",
+   "last_is_eos": true,
+   "text": "May"
+  },
+  {
+   "id": "SHORT-familiar-0001",
+   "finish": "eos",
+   "last_is_eos": true,
+   "text": "The number of crates purchased is 888."
+  },
+  {
+   "id": "SHORT-familiar-0002",
+   "finish": "eos",
+   "last_is_eos": true,
+   "text": "The destination code is PK. The serial number is 253. Therefore, the destination code is PK."
+  },
+  {
+   "id": "SHORT-familiar-0003",
+   "finish": "eos",
+   "last_is_eos": true,
+   "text": "February"
+  },
+  {
+   "id": "SHORT-familiar-0004",
+   "finish": "eos",
+   "last_is_eos": true,
+   "text": "The integer that represents the number of crates purchased is 3761."
+  }
+ ]
+}

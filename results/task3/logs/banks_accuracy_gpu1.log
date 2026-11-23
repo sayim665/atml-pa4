@@ -1,0 +1,8 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795434977.349666     288 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+accuracy target 0.7625
+accuracy original 0.5875
+accuracy off_s6304 0.6291666666666667
+accuracy off_s6305 0.6291666666666667
+accuracy on_s6304 0.5875
+accuracy on_s6305 0.5541666666666667

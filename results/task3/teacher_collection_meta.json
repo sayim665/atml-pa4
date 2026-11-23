@@ -1,0 +1,6 @@
+{
+ "seconds": 310.20954478000004,
+ "n": 800,
+ "tokens": 93956,
+ "note": "one response per training prompt; generated once, shared by both off-policy seeds"
+}

@@ -1,0 +1,15 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795437860.075981     339 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+spec off_s6305 gamma 2 rep 0 done
+spec off_s6305 gamma 2 rep 1 done
+spec off_s6305 gamma 4 rep 0 done
+spec off_s6305 gamma 4 rep 1 done
+spec on_s6305 gamma 2 rep 0 done
+spec on_s6305 gamma 2 rep 1 done
+spec on_s6305 gamma 4 rep 0 done
+spec on_s6305 gamma 4 rep 1 done
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795442068.743942     386 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+{'n_ctx': 128, 'target_step_ms': 40.93821549977292, 'draft_step_ms': 33.75881420033693, 'c': 0.8246283768896615, 'target_verify_3_ms': 39.37964330016257, 'v_2': 0.9619286727429778, 'target_verify_5_ms': 39.200817000164534, 'v_4': 0.9575604730592611}
+{'n_ctx': 512, 'target_step_ms': 40.11491279943584, 'draft_step_ms': 34.93414360018505, 'c': 0.8708517895787711, 'target_verify_3_ms': 41.29364450036519, 'v_2': 1.029383877931449, 'target_verify_5_ms': 41.68814659988129, 'v_4': 1.039218178244864}
+{'n_ctx': 1024, 'target_step_ms': 43.47342250039219, 'draft_step_ms': 37.261991699597274, 'c': 0.8571211916720181, 'target_verify_3_ms': 41.85673730025883, 'v_2': 0.9628121020350129, 'target_verify_5_ms': 40.6765774001542, 'v_4': 0.9356654033803583}

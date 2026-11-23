@@ -1,0 +1,32 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795432419.454071     184 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+on s6304 update 10 kl 0.2054 math 2261 short 690
+on s6304 update 20 kl 0.1840 math 4465 short 1479
+on s6304 update 30 kl 0.1036 math 6497 short 2149
+on s6304 update 40 kl 0.1590 math 8609 short 2853
+on s6304 update 50 kl 0.1253 math 10943 short 3617
+on s6304 update 60 kl 0.1454 math 13159 short 4336
+on s6304 update 70 kl 0.1697 math 15261 short 5043
+on s6304 update 80 kl 0.1330 math 17373 short 5732
+on s6304 update 90 kl 0.1135 math 19478 short 6485
+on s6304 update 100 kl 0.1173 math 21593 short 7211
+on s6304 update 110 kl 0.0571 math 23903 short 7919
+on s6304 update 120 kl 0.1046 math 26163 short 8665
+on s6304 update 130 kl 0.2356 math 28355 short 9423
+done on s6304: 138 updates, 2276s
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795434714.931739     234 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+off s6304 update 10 kl 0.1315 math 2010 short 686
+off s6304 update 20 kl 0.1607 math 4145 short 1338
+off s6304 update 30 kl 0.1174 math 6222 short 2073
+off s6304 update 40 kl 0.0667 math 8334 short 2768
+off s6304 update 50 kl 0.2465 math 10406 short 3500
+off s6304 update 60 kl 0.0686 math 12752 short 4225
+off s6304 update 70 kl 0.0504 math 14950 short 4990
+off s6304 update 80 kl 0.0481 math 17257 short 5692
+off s6304 update 90 kl 0.1337 math 19604 short 6478
+off s6304 update 100 kl 0.0879 math 21679 short 7218
+off s6304 update 110 kl 0.1609 math 23937 short 7945
+off s6304 update 120 kl 0.1202 math 26096 short 8660
+off s6304 update 130 kl 0.0671 math 28204 short 9366
+done off s6304: 138 updates, 190s
