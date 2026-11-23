@@ -1,0 +1,109 @@
+[
+ {
+  "kind": "standalone_answer_flip",
+  "prompt_id": "GSM8K-0002",
+  "rep": 0,
+  "workload": "math",
+  "target": {
+   "correct": false,
+   "pred": "1"
+  },
+  "original": {
+   "correct": false,
+   "pred": "18",
+   "text": "e 15 liters of pineapple drink:\n\\[ 9 + 15 = 24 \\text{ liters} \\]\n\nThe total amount of water in the 24 liters of beverage is:\n\\[ 9 \\text{ liters of orange drink} + 9 \\text{ liters of pineapple drink} = 18 \\text{ liters of water} \\]\n\nSo, the amount of water left in the 24-liter container is 18 liters."
+  },
+  "off_s6304": {
+   "correct": true,
+   "pred": "15",
+   "text": " unintentional because of accident - will be added to 27 liters minus (you spilled so much) 27 liters. This means the bowl with all 27 liters is now full with 9 liters of coke.\n\nSo, 24 more liters will be the remaining from the 15 litres.\n\nThanks for let me know if I didn't understand this properly."
+  }
+ },
+ {
+  "kind": "standalone_answer_flip",
+  "prompt_id": "GSM8K-0006",
+  "rep": 0,
+  "workload": "math",
+  "target": {
+   "correct": true,
+   "pred": "40"
+  },
+  "original": {
+   "correct": false,
+   "pred": "67",
+   "text": "of girls in the Girl Scout is 133.33 when rounded, but for the purpose of this calculation considering the closest whole number, we'll use 133.\n\nNow, to find out how many girls are not in the Girl Scout:\n\\[ 200 - 133 = 67 \\]\n\nSo, the number of girls who are not in the Girl Scout is:\n\\[ \\boxed{67} \\]"
+  },
+  "off_s6304": {
+   "correct": true,
+   "pred": "40",
+   "text": "erefore analyzing remaining clearly confines:\n\nFinally, Girl scouts subtraction, given Jessica\tarrive's representation confirms specific themifically identifiable imbalance.\n\nGiven:\n\nBoy students -> FG = 80%fully conservatively 40%\nGirl scouts -> SC is every other percentalso school intercessiondela"
+  }
+ },
+ {
+  "kind": "standalone_answer_flip",
+  "prompt_id": "GSM8K-0013",
+  "rep": 0,
+  "workload": "math",
+  "target": {
+   "correct": true,
+   "pred": "280"
+  },
+  "original": {
+   "correct": false,
+   "pred": "420",
+   "text": "* \n   \\[\n   1000 - 300 = 700\n   \\]\n4. **Students going out through exit B:** 3/5 of the remaining students after exit A.\n   \\[\n   \\frac{3}{5} \\times 700 = 420\n   \\]\n   So, 420 students left the building through exit B.\n   \nTherefore, the number of students who went out through exit C is \\boxed{420}."
+  },
+  "off_s6304": {
+   "correct": true,
+   "pred": "280",
+   "text": "ts number out of the original 700 remaining is:\n\n\\[ 700 - 420 = 280 \\]\n\nWe know the number of students who went through exit C is the remaining ones, so the number of students who went through exit C is:\n\n\\[ 280 \\]\n\nTherefore, the number of students who went out through exit C is:\n\n\\[ \\boxed{280} \\]"
+  }
+ },
+ {
+  "kind": "low_acceptance_prompt",
+  "prompt_id": "SHORT-shifted-0009",
+  "workload": "short_shifted",
+  "per_draft": {
+   "original": {
+    "accepted": 1,
+    "examined": 2,
+    "out": 2,
+    "finish": "eos",
+    "thr_ratio": 0.48596692906952754,
+    "text": "June"
+   },
+   "off_s6304": {
+    "accepted": 4,
+    "examined": 4,
+    "out": 2,
+    "finish": "eos",
+    "thr_ratio": 0.4858867521483601,
+    "text": "June"
+   },
+   "off_s6305": {
+    "accepted": 4,
+    "examined": 4,
+    "out": 2,
+    "finish": "eos",
+    "thr_ratio": 0.5040153251596703,
+    "text": "June"
+   },
+   "on_s6304": {
+    "accepted": 4,
+    "examined": 4,
+    "out": 2,
+    "finish": "eos",
+    "thr_ratio": 0.4783886379044339,
+    "text": "June"
+   },
+   "on_s6305": {
+    "accepted": 4,
+    "examined": 4,
+    "out": 2,
+    "finish": "eos",
+    "thr_ratio": 0.45879280206772605,
+    "text": "June"
+   }
+  }
+ }
+]

@@ -1,0 +1,112 @@
+{
+ "runs": [
+  {
+   "draft": "off_s6304",
+   "method": "off",
+   "seed": 6304,
+   "updates": 138,
+   "skipped_updates": 8,
+   "presentations": 888,
+   "scored_math": 30000,
+   "scored_short": 10000,
+   "mean_len_math": 178.57142857142858,
+   "mean_len_short": 13.88888888888889,
+   "truncated": 276,
+   "train_seconds": 189.97446111399995,
+   "cost_seconds": {
+    "teacher_scoring": 46.90779336200012,
+    "student_rollout": 0.0,
+    "backward_update": 141.9347266040004,
+    "teacher_generation_shared": 310.20954478000004
+   },
+   "total_cost_seconds": 500.184005894,
+   "peak_gib": 5.181817531585693,
+   "adapter_params": 1081344,
+   "backbone_params": 494032768,
+   "first10_kl": 0.17292323072728016,
+   "last10_kl": 0.12155947129697928
+  },
+  {
+   "draft": "off_s6305",
+   "method": "off",
+   "seed": 6305,
+   "updates": 136,
+   "skipped_updates": 8,
+   "presentations": 885,
+   "scored_math": 30000,
+   "scored_short": 10000,
+   "mean_len_math": 180.72289156626505,
+   "mean_len_short": 13.908205841446453,
+   "truncated": 285,
+   "train_seconds": 195.14255130499987,
+   "cost_seconds": {
+    "teacher_scoring": 47.184516127998904,
+    "student_rollout": 0.0,
+    "backward_update": 146.85069673100315,
+    "teacher_generation_shared": 310.20954478000004
+   },
+   "total_cost_seconds": 505.3520960849999,
+   "peak_gib": 5.18231725692749,
+   "adapter_params": 1081344,
+   "backbone_params": 494032768,
+   "first10_kl": 0.15795271349774162,
+   "last10_kl": 0.12226301313776695
+  },
+  {
+   "draft": "on_s6304",
+   "method": "on",
+   "seed": 6304,
+   "updates": 138,
+   "skipped_updates": 9,
+   "presentations": 814,
+   "scored_math": 30000,
+   "scored_short": 10000,
+   "mean_len_math": 182.9268292682927,
+   "mean_len_short": 15.384615384615385,
+   "truncated": 336,
+   "train_seconds": 2275.705860597,
+   "cost_seconds": {
+    "teacher_scoring": 47.87172644599832,
+    "student_rollout": 2092.270452717003,
+    "backward_update": 134.4456047990045
+   },
+   "total_cost_seconds": 2275.705860597,
+   "peak_gib": 5.1781721115112305,
+   "adapter_params": 1081344,
+   "backbone_params": 494032768,
+   "first10_kl": 0.2134340528131539,
+   "last10_kl": 0.1786152101058277
+  },
+  {
+   "draft": "on_s6305",
+   "method": "on",
+   "seed": 6305,
+   "updates": 136,
+   "skipped_updates": 8,
+   "presentations": 823,
+   "scored_math": 30000,
+   "scored_short": 10000,
+   "mean_len_math": 179.64071856287424,
+   "mean_len_short": 15.24390243902439,
+   "truncated": 307,
+   "train_seconds": 2323.146510772,
+   "cost_seconds": {
+    "teacher_scoring": 48.86684788599541,
+    "student_rollout": 2135.773727876992,
+    "backward_update": 137.35930074699672
+   },
+   "total_cost_seconds": 2323.146510772,
+   "peak_gib": 5.182073593139648,
+   "adapter_params": 1081344,
+   "backbone_params": 494032768,
+   "first10_kl": 0.23809175869109817,
+   "last10_kl": 0.15429390805704474
+  }
+ ],
+ "teacher_collection": {
+  "seconds": 310.20954478000004,
+  "n": 800,
+  "tokens": 93956,
+  "note": "one response per training prompt; generated once, shared by both off-policy seeds"
+ }
+}
