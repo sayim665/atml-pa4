@@ -1,0 +1,75 @@
+{
+  "condition": "fp16",
+  "seed": 6304,
+  "compression_seconds": 2.382999923611351e-06,
+  "calibration_seconds": 0.0,
+  "storage": {
+    "total_bytes": 3087428608
+  },
+  "dev_nll": 2.5267345965958388,
+  "wikitext2": {
+    "suite": "wikitext2",
+    "n_windows": 437,
+    "n_scored_tokens": 50000,
+    "mean_nll": 2.779268691444397,
+    "ppl": 16.10723727937433
+  },
+  "c4": {
+    "suite": "c4",
+    "n_windows": 177,
+    "n_scored_tokens": 50000,
+    "mean_nll": 2.7055501812744143,
+    "ppl": 14.962546539287581
+  },
+  "hellaswag": {
+    "n": 2000,
+    "acc": 0.5045,
+    "acc_norm": 0.6945,
+    "task_version": "lm-eval-harness hellaswag v1 preprocessing; zero-shot; ctx_a + ' ' + ctx_b.capitalize()"
+  },
+  "resources": {
+    "unit": "milliseconds",
+    "repetitions": 5,
+    "warmup": 2,
+    "batch": 1,
+    "execution": "dense FP16 matmuls on the effective (dequantized / zero-filled) weights",
+    "prefill_512_ms": {
+      "mean": 102.03957679998439,
+      "std": 1.5278343040533457,
+      "min": 100.36255700003949,
+      "all": [
+        104.6183649999648,
+        101.9818289998966,
+        100.36255700003949,
+        102.57916000000478,
+        100.65597300001627
+      ]
+    },
+    "prefill_2048_ms": {
+      "mean": 434.0222349999749,
+      "std": 1.0994537732890508,
+      "min": 432.913396999993,
+      "all": [
+        434.7322039999426,
+        433.4722280000278,
+        433.1629329999487,
+        432.913396999993,
+        435.8304129999624
+      ]
+    },
+    "decode_64_ms": {
+      "mean": 2305.0141248000273,
+      "std": 35.089738206864084,
+      "min": 2240.7918620000373,
+      "all": [
+        2346.1986500000194,
+        2302.9315780000843,
+        2320.396778000031,
+        2240.7918620000373,
+        2314.751755999964
+      ]
+    },
+    "peak_allocated_bytes": 3727076864,
+    "peak_reserved_bytes": 4148166656
+  }
+}

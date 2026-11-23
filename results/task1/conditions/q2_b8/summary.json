@@ -1,0 +1,85 @@
+{
+  "condition": "q2_b8",
+  "seed": 6304,
+  "compression_seconds": 7.3003508530000545,
+  "calibration_seconds": 22.565621769000018,
+  "awq_scale_search_seconds": 157.89642080500005,
+  "storage": {
+    "payload_bytes": 1310195712,
+    "group_metadata_bytes": 30707712,
+    "serialized_awq_scale_bytes": 86016,
+    "uncompressed_fp16_bytes": 467037184,
+    "total_bytes": 1808026624,
+    "nominal_bits_per_eligible_weight": 8.0,
+    "effective_bits_per_eligible_weight": 8.188025210084033,
+    "dense_fp16_total_bytes": 3087428608
+  },
+  "calib_output_error_mean": 2.4576358804475436e-05,
+  "calib_output_error_median": 2.4612232664367184e-05,
+  "dev_nll": 2.526977774215071,
+  "wikitext2": {
+    "suite": "wikitext2",
+    "n_windows": 437,
+    "n_scored_tokens": 50000,
+    "mean_nll": 2.779916649017334,
+    "ppl": 16.117677467782894
+  },
+  "c4": {
+    "suite": "c4",
+    "n_windows": 177,
+    "n_scored_tokens": 50000,
+    "mean_nll": 2.7058099211120608,
+    "ppl": 14.966433413462655
+  },
+  "hellaswag": {
+    "n": 512,
+    "acc": 0.4609375,
+    "acc_norm": 0.58203125,
+    "task_version": "lm-eval-harness hellaswag v1 preprocessing; zero-shot; ctx_a + ' ' + ctx_b.capitalize()"
+  },
+  "resources": {
+    "unit": "milliseconds",
+    "repetitions": 5,
+    "warmup": 2,
+    "batch": 1,
+    "execution": "dense FP16 matmuls on the effective (dequantized / zero-filled) weights",
+    "prefill_512_ms": {
+      "mean": 106.25529139997525,
+      "std": 2.736946295987818,
+      "min": 104.28018199991129,
+      "all": [
+        106.31117399998402,
+        104.28018199991129,
+        104.40389900008995,
+        104.74842200005696,
+        111.53277999983402
+      ]
+    },
+    "prefill_2048_ms": {
+      "mean": 458.3191653999165,
+      "std": 1.9802331434217566,
+      "min": 454.606775000002,
+      "all": [
+        458.8567379998949,
+        458.2844639999166,
+        459.4857019999381,
+        454.606775000002,
+        460.362147999831
+      ]
+    },
+    "decode_64_ms": {
+      "mean": 2365.7839881999735,
+      "std": 11.62193091115543,
+      "min": 2353.050334999807,
+      "all": [
+        2353.050334999807,
+        2380.7238110000526,
+        2377.4336480000784,
+        2364.2549430001054,
+        2353.457203999824
+      ]
+    },
+    "peak_allocated_bytes": 3727994368,
+    "peak_reserved_bytes": 4148166656
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "condition": "p1_s75",
+  "seed": 6304,
+  "compression_seconds": 7.722481132999974,
+  "calibration_seconds": 0.0,
+  "storage": {
+    "format": "mask bit per eligible weight + FP16 per nonzero (per-tensor byte alignment)",
+    "eligible_nonzeros": 327548928,
+    "eligible_bytes": 818872320,
+    "total_bytes": 1285909504,
+    "dense_fp16_total_bytes": 3087428608,
+    "dense_with_zeros_total_bytes": 3087428608
+  },
+  "achieved_eligible_sparsity": 0.75,
+  "calib_output_error_mean": 0.2175957063612129,
+  "calib_output_error_median": 0.22423072904348373,
+  "dev_nll": 14.22916640787442,
+  "wikitext2": {
+    "suite": "wikitext2",
+    "n_windows": 437,
+    "n_scored_tokens": 50000,
+    "mean_nll": 14.286049238204956,
+    "ppl": 1600856.3106564204
+  },
+  "c4": {
+    "suite": "c4",
+    "n_windows": 177,
+    "n_scored_tokens": 50000,
+    "mean_nll": 14.013051246948242,
+    "ppl": 1218402.6395265297
+  },
+  "hellaswag": {
+    "n": 512,
+    "acc": 0.28125,
+    "acc_norm": 0.27734375,
+    "task_version": "lm-eval-harness hellaswag v1 preprocessing; zero-shot; ctx_a + ' ' + ctx_b.capitalize()"
+  },
+  "resources": {
+    "unit": "milliseconds",
+    "repetitions": 5,
+    "warmup": 2,
+    "batch": 1,
+    "execution": "dense FP16 matmuls on the effective (dequantized / zero-filled) weights",
+    "prefill_512_ms": {
+      "mean": 95.6643523999901,
+      "std": 2.0325816361537368,
+      "min": 92.19597700007398,
+      "all": [
+        98.18035099988265,
+        97.08342499993705,
+        92.19597700007398,
+        95.13571299999057,
+        95.72629600006621
+      ]
+    },
+    "prefill_2048_ms": {
+      "mean": 407.74521460007236,
+      "std": 3.1560741682567137,
+      "min": 404.7100430000228,
+      "all": [
+        406.73536799999965,
+        404.7100430000228,
+        406.0918490001768,
+        407.38484600001357,
+        413.803967000149
+      ]
+    },
+    "decode_64_ms": {
+      "mean": 2313.938656600021,
+      "std": 16.656333350172478,
+      "min": 2290.939148999996,
+      "all": [
+        2290.939148999996,
+        2324.7326610000982,
+        2339.1009899999062,
+        2310.9671330000765,
+        2303.953350000029
+      ]
+    },
+    "peak_allocated_bytes": 3727076864,
+    "peak_reserved_bytes": 4148166656
+  }
+}

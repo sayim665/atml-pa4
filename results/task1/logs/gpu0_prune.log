@@ -1,0 +1,58 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795429683.539391     131 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+=== fp16
+fp16 wikitext2 ppl=16.107
+fp16 c4 ppl=14.963
+fp16 hellaswag n=2000 acc=0.5045 acc_norm=0.6945
+=== p1_s25
+p1_s25 wikitext2 ppl=21.330
+p1_s25 c4 ppl=17.986
+p1_s25 hellaswag n=512 acc=0.4512 acc_norm=0.5879
+=== p1_s50
+p1_s50 wikitext2 ppl=127.797
+p1_s50 c4 ppl=102.455
+p1_s50 hellaswag n=2000 acc=0.3245 acc_norm=0.3995
+=== p1_s75
+p1_s75 wikitext2 ppl=1600856.311
+p1_s75 c4 ppl=1218402.640
+p1_s75 hellaswag n=512 acc=0.2812 acc_norm=0.2773
+=== p2_s25
+p2_s25 wikitext2 ppl=16.551
+p2_s25 c4 ppl=15.388
+p2_s25 hellaswag n=512 acc=0.4688 acc_norm=0.5957
+=== p2_s50
+p2_s50 wikitext2 ppl=25.500
+p2_s50 c4 ppl=21.225
+p2_s50 hellaswag n=2000 acc=0.4280 acc_norm=0.5805
+=== p2_s75
+p2_s75 wikitext2 ppl=64134.929
+p2_s75 c4 ppl=52066.216
+p2_s75 hellaswag n=512 acc=0.2754 acc_norm=0.2969
+=== p2_24
+p2_24 wikitext2 ppl=67.978
+p2_24 c4 ppl=51.422
+p2_24 hellaswag n=512 acc=0.3496 acc_norm=0.4453
+=== p3_s50
+p3 s=0.5 owl lam=0.04 dev_nll=2.8240
+p3 s=0.5 owl lam=0.08 dev_nll=2.8205
+p3 s=0.5 owl lam=0.12 dev_nll=2.8291
+p3 s=0.5 owl lam=0.2 dev_nll=2.8661
+p3 s=0.5 bi lam=0.04 dev_nll=2.8244
+p3 s=0.5 bi lam=0.08 dev_nll=2.8184
+p3 s=0.5 bi lam=0.12 dev_nll=2.8202
+p3 s=0.5 bi lam=0.2 dev_nll=2.8294
+p3_s50 wikitext2 ppl=24.879
+p3_s50 c4 ppl=20.822
+p3_s50 hellaswag n=2000 acc=0.4240 acc_norm=0.5755
+=== p3_s75
+p3 s=0.75 owl lam=0.04 dev_nll=7.8812
+p3 s=0.75 owl lam=0.08 dev_nll=6.2167
+p3 s=0.75 owl lam=0.12 dev_nll=5.4962
+p3 s=0.75 owl lam=0.2 dev_nll=5.3108
+p3 s=0.75 bi lam=0.04 dev_nll=7.5126
+p3 s=0.75 bi lam=0.08 dev_nll=6.1035
+p3 s=0.75 bi lam=0.12 dev_nll=5.4145
+p3 s=0.75 bi lam=0.2 dev_nll=5.3348
+p3_s75 wikitext2 ppl=260.364
+p3_s75 c4 ppl=204.749
+p3_s75 hellaswag n=512 acc=0.2930 acc_norm=0.3320

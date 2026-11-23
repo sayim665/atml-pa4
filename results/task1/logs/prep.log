@@ -1,0 +1,7 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795429448.219592      78 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+awq scales 2-bit done (38s)
+awq scales 3-bit done (77s)
+awq scales 4-bit done (118s)
+awq scales 8-bit done (158s)
+prep done
