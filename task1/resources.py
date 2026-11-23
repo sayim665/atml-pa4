@@ -29,10 +29,11 @@ def sparse_storage(model, enum_info):
                 dense_with_zeros_total_bytes=dense_fp16_bytes(enum_info))
 
 
-def quantized_storage(model, enum_info, bits_by_block, serialized_scale_bytes=0):
+def quantized_storage(model, enum_info, bits_by_block, serialized_scale_bytes=0, bits_by_name=None):
     payload = metadata = 0
-    for _, block, _, m in common.eligible_linears(model):
-        b = quant.quantized_tensor_bytes(tuple(m.weight.shape), bits_by_block[block])
+    for name, block, _, m in common.eligible_linears(model):
+        bits = bits_by_name[name] if bits_by_name is not None else bits_by_block[block]
+        b = quant.quantized_tensor_bytes(tuple(m.weight.shape), bits)
         payload += b["payload"]
         metadata += b["metadata"]
     total = payload + metadata + serialized_scale_bytes + other_params_bytes(enum_info)

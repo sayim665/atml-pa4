@@ -14,9 +14,9 @@ from task1 import calibration, common, config, evaluate, prune, quant, resources
 
 PRUNE_CONDITIONS = [f"p{m}_s{int(s * 100)}" for m in (1, 2) for s in config.SPARSITIES] + \
                    [f"p3_s{int(s * 100)}" for s in config.P3_SPARSITIES] + ["p2_24"]
-QUANT_CONDITIONS = [f"q{m}_b{b}" for m in (1, 2) for b in config.BITS] + ["q3_int4", "q3_int3"]
+QUANT_CONDITIONS = [f"q{m}_b{b}" for m in (1, 2) for b in config.BITS] + ["q3_int4", "q3_int3", "q3f_int4", "q3f_int3"]
 ALL_CONDITIONS = ["fp16"] + PRUNE_CONDITIONS + QUANT_CONDITIONS
-FULL_HELLASWAG = {"fp16", "p1_s50", "p2_s50", "p3_s50", "q1_b4", "q1_b3", "q2_b4", "q2_b3", "q3_int4", "q3_int3"}
+FULL_HELLASWAG = {"fp16", "p1_s50", "p2_s50", "p3_s50", "q1_b4", "q1_b3", "q2_b4", "q2_b3", "q3_int4", "q3_int3", "q3f_int4", "q3f_int3"}
 AWQ_GROUP_LINEARS = {"attn_in": ("q_proj", "k_proj", "v_proj"), "o_in": ("o_proj",),
                      "mlp_in": ("gate_proj", "up_proj"), "down_in": ("down_proj",)}
 FOLDING = {"attn_in": "folded into input_layernorm weight", "mlp_in": "folded into post_attention_layernorm weight",
@@ -182,13 +182,13 @@ def uniform_counts(ctx, sparsity):
 
 
 @torch.no_grad()
-def apply_quant(ctx, bits_by_block, awq, blocks=None):
+def apply_quant(ctx, bits_by_block, awq, blocks=None, bits_by_name=None):
     scales = ctx.awq_scales() if awq else None
     rows = []
     for name, block, proj, m in ctx.linears:
         if blocks is not None and block not in blocks:
             continue
-        bits = bits_by_block[block]
+        bits = bits_by_name[name] if bits_by_name is not None else bits_by_block[block]
         w = ctx.original(name)
         key = calibration.group_key(block, proj)
         if awq:
@@ -326,9 +326,119 @@ def q3_select(ctx, uniform_bits):
                 selection_seconds=time.perf_counter() - start + sens["seconds"])
 
 
-def quantized_total(ctx, bits):
-    return resources.quantized_storage(ctx.model, ctx.enum_info, dict(enumerate(bits)),
-                                       awq_serialized_bytes(ctx))["total_bytes"]
+def quantized_total(ctx, bits=None, bits_by_name=None):
+    return resources.quantized_storage(ctx.model, ctx.enum_info, dict(enumerate(bits)) if bits else None,
+                                       awq_serialized_bytes(ctx), bits_by_name=bits_by_name)["total_bytes"]
+
+
+# ---------------------------------------------------------------- Q3 design 2: projection-level Fisher (HAWQ-style)
+
+def fisher_costs(ctx):
+    """Diagonal empirical Fisher F = sum_t g^2 of the calibration LM loss (summed token NLL per sequence),
+    then cost_u(b) = 1/2 sum_i F_i (W_i - W_hat_i(b))^2 for every eligible projection u and allowed bit width b,
+    with W_hat the same AWQ-style quantizer used by Q2/Q3."""
+    path = config.RESULTS_DIR / "q3_fisher_costs.json"
+    if path.exists():
+        import json
+        return json.loads(path.read_text())
+    start = time.perf_counter()
+    ctx.restore()
+    weights = [m.weight for _, _, _, m in ctx.linears]
+    fisher = [torch.zeros_like(w, dtype=torch.float32) for w in weights]
+    for w in weights:
+        w.requires_grad_(True)
+    skipped = 0
+    rows = common.load_calibration()
+    for r in rows:
+        ids = torch.tensor([r["token_ids"]], device=ctx.dev)
+        logits = ctx.model(input_ids=ids).logits[0, :-1].float()
+        loss = torch.nn.functional.cross_entropy(logits, ids[0, 1:], reduction="sum")
+        grads = torch.autograd.grad(loss, weights)
+        if not all(torch.isfinite(g).all() for g in grads):
+            skipped += 1
+            continue
+        for f, g in zip(fisher, grads):
+            f += g.float() ** 2
+        del grads, logits, loss
+    for w in weights:
+        w.requires_grad_(False)
+    scales = ctx.awq_scales()
+    costs = {}
+    with torch.no_grad():
+        for (name, block, proj, m), f in zip(ctx.linears, fisher):
+            w = ctx.original(name)
+            s_key = calibration.group_key(block, proj)
+            costs[name] = {str(b): 0.5 * float((f * (w.float() - quant.scaled_quantize(
+                w, scales[b][s_key]["scales"].to(ctx.dev), b)) ** 2).sum()) for b in config.ALLOWED_BITS}
+    del fisher
+    torch.cuda.empty_cache() if torch.cuda.is_available() else None
+    out = dict(costs=costs, numel={n: m.weight.numel() for n, _, _, m in ctx.linears}, skipped_sequences=skipped,
+               n_sequences=len(rows), seconds=time.perf_counter() - start)
+    common.save_json(path, out)
+    return out
+
+
+def lagrangian_allocation(costs, numel, budget_bits):
+    """Multiple-choice knapsack over projections: minimize sum cost_u(b_u) s.t. sum numel_u * b_u <= budget.
+    Lagrangian relaxation (bisection on lambda) followed by greedy upgrades by cost reduction per extra bit."""
+    names = list(costs)
+    bits_set = sorted(config.ALLOWED_BITS)
+    c = {n: monotone({b: costs[n][str(b)] for b in bits_set}) for n in names}
+
+    def pick(lam):
+        return {n: min(bits_set, key=lambda b: (c[n][b] + lam * numel[n] * b, -b)) for n in names}
+
+    def used(alloc):
+        return sum(numel[n] * alloc[n] for n in names)
+    lo, hi = 0.0, 1.0
+    while used(pick(hi)) > budget_bits:
+        hi *= 2
+    for _ in range(200):
+        mid = (lo + hi) / 2
+        if used(pick(mid)) > budget_bits:
+            lo = mid
+        else:
+            hi = mid
+    alloc = pick(hi)
+    while True:
+        spare = budget_bits - used(alloc)
+        best = None
+        for n in names:
+            higher = [b for b in bits_set if b > alloc[n] and numel[n] * (b - alloc[n]) <= spare]
+            for b in higher:
+                gain = (c[n][alloc[n]] - c[n][b]) / (numel[n] * (b - alloc[n]))
+                if gain > 0 and (best is None or gain > best[0]):
+                    best = (gain, n, b)
+        if best is None:
+            break
+        alloc[best[1]] = best[2]
+    assert used(alloc) <= budget_bits
+    return alloc
+
+
+def q3f_select(ctx, uniform_bits):
+    start = time.perf_counter()
+    block = q3_select(ctx, uniform_bits)            # design 1 candidates (block level), kept for comparison
+    fc = fisher_costs(ctx)
+    total_numel = sum(fc["numel"].values())
+    alloc = lagrangian_allocation(fc["costs"], fc["numel"], uniform_bits * total_numel)
+    total = quantized_total(ctx, bits_by_name=alloc)
+    assert total <= block["budget_bytes"], (total, block["budget_bytes"])
+    ctx.restore()
+    apply_quant(ctx, None, awq=True, bits_by_name=alloc)
+    dev = evaluate.development_nll(ctx.model)
+    ctx.restore()
+    print(f"q3f int{uniform_bits} fisher_projection dev_nll={dev:.4f} bits histogram="
+          f"{ {b: sum(v == b for v in alloc.values()) for b in config.ALLOWED_BITS} }", flush=True)
+    candidates = block["candidates"] + [dict(sensitivity="fisher_projection", bits_by_name=alloc, total_bytes=total,
+                                             dev_nll=dev)]
+    best = min(candidates, key=lambda c: c["dev_nll"])
+    return dict(uniform_bits=uniform_bits, budget_bytes=block["budget_bytes"], candidates=candidates, selected=best,
+                fisher=dict(seconds=fc["seconds"], skipped_sequences=fc["skipped_sequences"],
+                            n_sequences=fc["n_sequences"], costs=fc["costs"]),
+                selection_rule="minimum C4-development NLL over block dev-probe, block calibration-error and "
+                               "projection-level Fisher allocations",
+                selection_seconds=time.perf_counter() - start)
 
 
 # ---------------------------------------------------------------- condition driver
@@ -366,6 +476,16 @@ def run_condition(ctx, cond):
     elif cond.startswith(("q1", "q2")):
         b = int(cond.split("_b")[1])
         layer_rows = apply_quant(ctx, {l: b for l in range(n_blocks)}, awq=cond.startswith("q2"))
+    elif cond.startswith("q3f"):
+        b = int(cond.split("int")[1])
+        sel = q3f_select(ctx, b)
+        extra["allocation"] = sel
+        start = time.perf_counter()
+        chosen = sel["selected"]
+        if "bits_by_name" in chosen:
+            layer_rows = apply_quant(ctx, None, awq=True, bits_by_name=chosen["bits_by_name"])
+        else:
+            layer_rows = apply_quant(ctx, dict(enumerate(chosen["bits"])), awq=True)
     elif cond.startswith("q3"):
         b = int(cond.split("int")[1])
         sel = q3_select(ctx, b)
@@ -385,9 +505,10 @@ def run_condition(ctx, cond):
         summary["storage"] = resources.sparse_storage(ctx.model, ctx.enum_info)
         summary["achieved_eligible_sparsity"] = 1 - summary["storage"]["eligible_nonzeros"] / ctx.enum_info["eligible_params"]
     elif cond.startswith("q"):
-        bits = {r["block"]: r["bits"] for r in layer_rows}
+        bits = {r["name"]: r["bits"] for r in layer_rows}
         summary["storage"] = resources.quantized_storage(
-            ctx.model, ctx.enum_info, bits, awq_serialized_bytes(ctx) if not cond.startswith("q1") else 0)
+            ctx.model, ctx.enum_info, None, awq_serialized_bytes(ctx) if not cond.startswith("q1") else 0,
+            bits_by_name=bits)
     else:
         summary["storage"] = dict(total_bytes=resources.dense_fp16_bytes(ctx.enum_info))
     if layer_rows:

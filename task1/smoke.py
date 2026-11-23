@@ -80,8 +80,9 @@ def main():
     budget = {b: json.loads((config.RESULTS_DIR / "conditions" / f"q2_b{b}" / "summary.json").read_text())
               ["storage"]["total_bytes"] for b in (4, 3)}
     for b in (4, 3):
-        s = json.loads((config.RESULTS_DIR / "conditions" / f"q3_int{b}" / "summary.json").read_text())
-        assert s["storage"]["total_bytes"] <= budget[b], (s["storage"]["total_bytes"], budget[b])
+        for name in (f"q3_int{b}", f"q3f_int{b}"):
+            s = json.loads((config.RESULTS_DIR / "conditions" / name / "summary.json").read_text())
+            assert s["storage"]["total_bytes"] <= budget[b], (name, s["storage"]["total_bytes"], budget[b])
     for s in (50, 75):
         p2 = json.loads((config.RESULTS_DIR / "conditions" / f"p2_s{s}" / "summary.json").read_text())
         p3 = json.loads((config.RESULTS_DIR / "conditions" / f"p3_s{s}" / "summary.json").read_text())
