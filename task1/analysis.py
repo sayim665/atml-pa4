@@ -109,6 +109,47 @@ def latex(rows):
 
 # ---------------------------------------------------------------- figures
 
+def nice(c):
+    """Readable condition names for figures."""
+    if c == "fp16":
+        return "FP16"
+    if c == "p2_24":
+        return "P2 Wanda 2:4"
+    m, rest = c.split("_", 1)
+    if m in ("p1", "p2", "p3"):
+        return f"{m.upper()} {rest[1:]}%"
+    if m in ("q1", "q2"):
+        return f"{m.upper()} INT{rest[1:]}"
+    if m == "q3":
+        return f"Q3-block {rest.upper()}"
+    if m == "q3f":
+        return f"Q3-Fisher {rest.upper()}"
+    return c
+
+
+def label_points(ax, xs, ys, names, fontsize=6.5, min_gap=9):
+    """Annotate points with labels pushed apart vertically (display coordinates) and thin leader lines."""
+    ax.figure.canvas.draw()
+    pts = ax.transData.transform(np.column_stack([xs, ys]))
+    placed = {1: [], -1: []}                     # labels already placed to the right (+1) / left (-1) of points
+
+    def settle(side, x, y):
+        ly = y
+        for px, py in sorted(placed[side], key=lambda t: t[1]):
+            if abs(px - x) < 70 and abs(py - ly) < min_gap:
+                ly = py + min_gap
+        return ly
+
+    for i in np.argsort(pts[:, 1]):
+        x, y = pts[i]
+        right, left = settle(1, x, y), settle(-1, x, y)
+        side, ly = (1, right) if right - y <= left - y + 4 else (-1, left)
+        placed[side].append((x, ly))
+        ax.annotate(names[i], (xs[i], ys[i]), xytext=(6 * side, ly - y), textcoords="offset points", fontsize=fontsize,
+                    va="center", ha="left" if side > 0 else "right",
+                    arrowprops=dict(arrowstyle="-", lw=0.4, color="0.5") if abs(ly - y) > 2 else None)
+
+
 def fig_tradeoff(S):
     fig, ax = plt.subplots(1, 3, figsize=(13, 3.6))
     for method, label, mk in (("p1", "P1 magnitude", "o"), ("p2", "P2 Wanda", "s"), ("p3", "P3 nonuniform Wanda", "^")):
@@ -116,25 +157,30 @@ def fig_tradeoff(S):
         xs.sort()
         ax[0].plot([0] + [x for x, _ in xs], [S["fp16"]["wikitext2"]["ppl"]] + [y for _, y in xs], marker=mk, label=label)
     if "p2_24" in S:
-        ax[0].scatter([0.5], [S["p2_24"]["wikitext2"]["ppl"]], marker="x", color="k", zorder=5, label="Wanda 2:4")
+        ax[0].scatter([0.5], [S["p2_24"]["wikitext2"]["ppl"]], marker="x", color="k", zorder=5, label="P2 Wanda 2:4")
     ax[0].set_yscale("log"); ax[0].set_xlabel("eligible-weight sparsity"); ax[0].set_ylabel("WikiText-2 PPL (log)")
     ax[0].set_title("Pruning: quality vs sparsity"); ax[0].legend(fontsize=7)
-    for prefix, label, mk in (("q1_b", "Q1 uniform", "o"), ("q2_b", "Q2 AWQ-style", "s"), ("q3_int", "Q3 block (=Q2)", "^"),
-                              ("q3f_int", "Q3 Fisher-proj", "D")):
+    styles = (("q1_b", "Q1 uniform", "o", 6, None), ("q2_b", "Q2 AWQ-style", "s", 6, None),
+              ("q3_int", "Q3 block-level (identical to Q2)", "o", 11, "none"),
+              ("q3f_int", "Q3 Fisher projection-level", "D", 6, None))
+    for prefix, label, mk, ms, fc in styles:
         pts = sorted((s["storage"]["total_bytes"] / 1e6, s["wikitext2"]["ppl"]) for c, s in S.items() if c.startswith(prefix))
         if pts:
-            ax[1].plot(*zip(*pts), marker=mk, label=label)
-    ax[1].scatter([S["fp16"]["storage"]["total_bytes"] / 1e6], [S["fp16"]["wikitext2"]["ppl"]], color="k", label="FP16")
+            ax[1].plot(*zip(*pts), marker=mk, ms=ms, mfc=fc, label=label)
+    ax[1].scatter([S["fp16"]["storage"]["total_bytes"] / 1e6], [S["fp16"]["wikitext2"]["ppl"]], color="k", label="FP16",
+                  zorder=5)
     pr = sorted((s["storage"]["total_bytes"] / 1e6, s["wikitext2"]["ppl"]) for c, s in S.items() if c.startswith("p2_s"))
-    ax[1].plot(*zip(*pr), ls="--", marker="s", color="gray", label="P2 Wanda (16-bit sparse format)")
-    ax[1].set_yscale("log"); ax[1].set_xlabel("packed model bytes incl. metadata (MB)"); ax[1].set_ylabel("WikiText-2 PPL (log)")
-    ax[1].set_title("Quality vs packed storage"); ax[1].legend(fontsize=7)
-    full = [c for c in S if len(S[c]["_hs"]) == 2000]
-    ax[2].scatter([S[c]["wikitext2"]["mean_nll"] for c in full], [100 * hs_vectors(S[c], 2000)[1].mean() for c in full])
-    for c in full:
-        ax[2].annotate(c, (S[c]["wikitext2"]["mean_nll"], 100 * hs_vectors(S[c], 2000)[1].mean()), fontsize=6)
+    ax[1].plot(*zip(*pr), ls="--", marker="s", color="gray", label="P2 Wanda, 16-bit sparse format (25/50/75%)")
+    ax[1].set_yscale("log"); ax[1].set_xlabel("model storage incl. metadata (MB = $10^6$ bytes)")
+    ax[1].set_ylabel("WikiText-2 PPL (log)")
+    ax[1].set_title("Quality vs storage (estimated packed bytes)"); ax[1].legend(fontsize=6.5)
+    full = [c for c in S if len(S[c]["_hs"]) == 2000 and not c.startswith("q3_")]       # q3_* coincide with q2_*
+    xs = [S[c]["wikitext2"]["mean_nll"] for c in full]
+    ys = [100 * hs_vectors(S[c], 2000)[1].mean() for c in full]
+    ax[2].scatter(xs, ys, s=18, c=["k" if c == "fp16" else ("C0" if c.startswith("p") else "C3") for c in full])
+    label_points(ax[2], xs, ys, [nice(c) for c in full])
     ax[2].set_xlabel("WikiText-2 mean NLL (nats/token)"); ax[2].set_ylabel("HellaSwag acc_norm (%, n=2000)")
-    ax[2].set_title("Likelihood vs answer selection")
+    ax[2].set_title("Likelihood vs answer selection (blue: pruning, red: quant.)", fontsize=10)
     fig.tight_layout(); fig.savefig(OUT / "fig_tradeoffs.pdf"); fig.savefig(OUT / "fig_tradeoffs.png", dpi=150); plt.close(fig)
 
 
@@ -143,41 +189,52 @@ def fig_sensitivity(S):
     for s_target, c in ((0.5, "p3_s50"), (0.75, "p3_s75")):
         if c in S:
             a = S[c]["_allocation"]
-            ax[1].plot(a["selected"]["block_sparsity"], marker=".", label=f"P3 {int(s_target * 100)}% "
-                       f"({a['selected']['sensitivity']}, $\\lambda$={a['selected']['lam']})")
+            name = {"bi": "block influence", "owl": "OWL"}.get(a["selected"]["sensitivity"], a["selected"]["sensitivity"])
+            ax[1].plot(a["selected"]["block_sparsity"], marker=".", label=f"P3 {int(s_target * 100)}% target "
+                       f"({name}, $\\lambda$={a['selected']['lam']})")
     a = S["p3_s50"]["_allocation"]
     owl, bi = np.array(a["sensitivity_values"]["owl"]), np.array(a["sensitivity_values"]["bi"])
-    ax[0].plot(owl / owl.max(), marker=".", label="OWL outlier ratio (norm.)")
-    ax[0].plot(bi / bi.max(), marker=".", label="block influence 1-cos (norm.)")
-    ax[0].set_xlabel("block"); ax[0].set_title("P3 sensitivity (calibration)"); ax[0].legend(fontsize=7)
+    ax[0].plot(owl / owl.max(), marker=".", label="OWL outlier ratio (max-normalized)")
+    ax[0].plot(bi / bi.max(), marker=".", label="block influence 1 - cos (max-normalized)")
+    ax[0].set_xlabel("block"); ax[0].set_ylabel("sensitivity (normalized)")
+    ax[0].set_title("P3 sensitivity measures (C4 calibration)"); ax[0].legend(fontsize=7)
     ax[1].axhline(0.5, color="gray", lw=0.5); ax[1].axhline(0.75, color="gray", lw=0.5)
-    ax[1].set_xlabel("block"); ax[1].set_ylabel("assigned sparsity"); ax[1].set_title("P3 allocations"); ax[1].legend(fontsize=7)
+    ax[1].axhspan(0.10, 0.85, color="0.93", zorder=0)
+    ax[1].set_xlabel("block"); ax[1].set_ylabel("assigned block sparsity"); ax[1].set_ylim(0.05, 0.9)
+    ax[1].set_title("P3 allocations (shaded: allowed [0.10, 0.85])"); ax[1].legend(fontsize=7, loc="lower right")
     sens = json.load(open(ROOT / "q3_sensitivity.json"))
     grid = np.array([sens["dev_delta_nll"][str(b)] for b in (2, 3, 4, 8)])
     im = ax[2].imshow(np.log10(np.clip(grid, 1e-5, None)), aspect="auto", cmap="viridis")
     ax[2].set_yticks(range(4)); ax[2].set_yticklabels(["2", "3", "4", "8"]); ax[2].set_xlabel("block")
-    ax[2].set_ylabel("bits (block alone)"); ax[2].set_title(r"Q3 probe: $\log_{10}\Delta$ dev NLL")
+    ax[2].set_ylabel("bits (this block only)"); ax[2].set_title(r"Q3 block probe: $\log_{10}\Delta$ dev NLL")
     fig.colorbar(im, ax=ax[2])
-    fig.tight_layout(); fig.savefig(OUT / "fig_sensitivity.pdf"); fig.savefig(OUT / "fig_sensitivity.png", dpi=150); plt.close(fig)
+    fig.tight_layout(); fig.savefig(OUT / "fig_sensitivity.pdf"); fig.savefig(OUT / "fig_sensitivity.png", dpi=150)
+    plt.close(fig)
 
 
 def fig_fisher(S):
+    from matplotlib.colors import BoundaryNorm, ListedColormap
     cands = [c for c in ("q3f_int4", "q3f_int3") if c in S]
     if not cands:
         return
     fig, ax = plt.subplots(1, len(cands) + 1, figsize=(5 * (len(cands) + 1), 3.6))
     costs = S[cands[0]]["_allocation"]["fisher"]["costs"]
-    names = list(costs)
-    mat = np.array([[costs[f"model.layers.{l}.{'self_attn' if p in PROJS[:4] else 'mlp'}.{p}"]["3"] for l in range(28)] for p in PROJS])
+    mat = np.array([[costs[f"model.layers.{l}.{'self_attn' if p in PROJS[:4] else 'mlp'}.{p}"]["3"] for l in range(28)]
+                    for p in PROJS])
     im = ax[0].imshow(np.log10(mat + 1e-12), aspect="auto", cmap="magma")
     ax[0].set_yticks(range(7)); ax[0].set_yticklabels(PROJS); ax[0].set_xlabel("block")
-    ax[0].set_title(r"Fisher-weighted INT3 error ($\log_{10}$)"); fig.colorbar(im, ax=ax[0])
+    ax[0].set_title(r"Fisher-weighted INT3 error, $\log_{10}$", fontsize=10); fig.colorbar(im, ax=ax[0])
+    cmap = ListedColormap(["#313695", "#74add1", "#fee090", "#d73027"])     # 2, 3, 4, 8 bits
+    norm = BoundaryNorm([1.5, 2.5, 3.5, 6, 9], cmap.N)
     for i, c in enumerate(cands):
         sel = next(x for x in S[c]["_allocation"]["candidates"] if x["sensitivity"] == "fisher_projection")["bits_by_name"]
-        bm = np.array([[sel[f"model.layers.{l}.{'self_attn' if p in PROJS[:4] else 'mlp'}.{p}"] for l in range(28)] for p in PROJS])
-        im = ax[i + 1].imshow(bm, aspect="auto", cmap="coolwarm", vmin=2, vmax=8)
+        bm = np.array([[sel[f"model.layers.{l}.{'self_attn' if p in PROJS[:4] else 'mlp'}.{p}"] for l in range(28)]
+                       for p in PROJS])
+        im = ax[i + 1].imshow(bm, aspect="auto", cmap=cmap, norm=norm)
         ax[i + 1].set_yticks(range(7)); ax[i + 1].set_yticklabels(PROJS); ax[i + 1].set_xlabel("block")
-        ax[i + 1].set_title(f"Fisher allocation, {c.split('_')[1].upper()} budget"); fig.colorbar(im, ax=ax[i + 1])
+        ax[i + 1].set_title(f"bit allocation at the Q2 uniform {c.split('_')[1].upper()} budget", fontsize=10)
+        cb = fig.colorbar(im, ax=ax[i + 1], ticks=[2, 3, 4.75, 7.5])
+        cb.ax.set_yticklabels(["2", "3", "4", "8"]); cb.set_label("bits", fontsize=8)
     fig.tight_layout(); fig.savefig(OUT / "fig_q3_fisher.pdf"); fig.savefig(OUT / "fig_q3_fisher.png", dpi=150); plt.close(fig)
 
 
@@ -185,36 +242,43 @@ def fig_mechanism(S):
     fig, ax = plt.subplots(1, 3, figsize=(13, 3.6))
     for c in ("p2_s25", "p2_s50", "p2_s75"):
         ov = S[c]["_mask_overlap_with_magnitude"]
-        ax[0].plot(range(7), [np.mean([r["jaccard"] for r in ov if r["proj"] == p]) for p in PROJS], marker="o", label=c)
+        ax[0].plot(range(7), [np.mean([r["jaccard"] for r in ov if r["proj"] == p]) for p in PROJS], marker="o",
+                   label=f"{c[4:]}% sparsity")
     ax[0].set_xticks(range(7)); ax[0].set_xticklabels([p.split("_")[0] for p in PROJS])
-    ax[0].set_ylabel("Jaccard(pruned sets)"); ax[0].set_title("Wanda vs magnitude mask overlap"); ax[0].legend(fontsize=7)
+    ax[0].set_ylabel("Jaccard(Wanda, magnitude pruned sets)"); ax[0].set_xlabel("projection (mean over blocks)")
+    ax[0].set_title("Wanda vs magnitude mask overlap"); ax[0].legend(fontsize=7)
     prep = json.load(open(ROOT / "prep" / "prep.json"))
     sd = prep["score_distributions"]
-    for p in PROJS:
+    # q/k/v_proj share one input and gate/up_proj share another (identical statistics): plot each once
+    for p, lab in (("q_proj", "q/k/v_proj (shared input)"), ("o_proj", "o_proj"),
+                   ("gate_proj", "gate/up_proj (shared input)"), ("down_proj", "down_proj")):
         ax[1].plot([r["block"] for r in sd if r["proj"] == p], [r["input_norm_max_over_median"] for r in sd if r["proj"] == p],
-                   marker=".", label=p)
-    ax[1].set_yscale("log"); ax[1].set_xlabel("block"); ax[1].set_ylabel(r"max/median $\|X_j\|_2$")
-    ax[1].set_title("Input-channel norm outliers"); ax[1].legend(fontsize=6)
+                   marker=".", label=lab)
+    ax[1].set_yscale("log"); ax[1].set_xlabel("block"); ax[1].set_ylabel(r"max / median input-channel norm $\|X_j\|_2$")
+    ax[1].set_title("Input-channel norm outliers (calibration)"); ax[1].legend(fontsize=7)
     for c, mk in (("p1_s50", "o"), ("p2_s50", "s"), ("q1_b3", "^"), ("q2_b3", "D")):
         L = S[c]["_layers"]
-        ax[2].scatter([r["block"] for r in L], [r["output_error"] for r in L], s=6, marker=mk, label=c)
-    ax[2].set_yscale("log"); ax[2].set_xlabel("block"); ax[2].set_ylabel("relative calib. output error")
-    ax[2].set_title("Per-projection calibration error"); ax[2].legend(fontsize=7)
+        ax[2].scatter([r["block"] for r in L], [r["output_error"] for r in L], s=6, marker=mk, label=nice(c))
+    ax[2].set_yscale("log"); ax[2].set_xlabel("block (7 projections each)"); ax[2].set_ylabel("relative calib. output error")
+    ax[2].set_title("Per-projection calibration output error"); ax[2].legend(fontsize=7, markerscale=2)
     fig.tight_layout(); fig.savefig(OUT / "fig_mechanism.pdf"); fig.savefig(OUT / "fig_mechanism.png", dpi=150); plt.close(fig)
 
 
 def fig_calib_vs_heldout(S):
-    fig, ax = plt.subplots(figsize=(4.5, 3.6))
+    fig, ax = plt.subplots(figsize=(5.2, 4.0))
     cs = [c for c in S if S[c].get("calib_output_error_mean") and S[c]["wikitext2"]["ppl"] < 1e4]
     x = [S[c]["calib_output_error_mean"] for c in cs]; y = [S[c]["wikitext2"]["mean_nll"] for c in cs]
-    ax.scatter(x, y)
-    for c, xi, yi in zip(cs, x, y):
-        ax.annotate(c, (xi, yi), fontsize=6)
-    ax.set_xscale("log"); ax.set_xlabel("mean relative calibration output error"); ax.set_ylabel("WikiText-2 mean NLL")
     from scipy.stats import spearmanr
     rho = spearmanr(x, y)
-    ax.set_title(f"Spearman $\\rho$={rho.correlation:.2f} (n={len(cs)})")
-    fig.tight_layout(); fig.savefig(OUT / "fig_calib_vs_heldout.pdf"); fig.savefig(OUT / "fig_calib_vs_heldout.png", dpi=150); plt.close(fig)
+    shown = [i for i, c in enumerate(cs) if not c.startswith("q3_")]            # q3_* coincide with q2_*
+    xs, ys = np.array(x)[shown], np.array(y)[shown]
+    ax.scatter(xs, ys, s=18, c=["C0" if cs[i].startswith("p") else "C3" for i in shown])
+    ax.set_xscale("log")
+    label_points(ax, xs, ys, [nice(cs[i]) for i in shown])
+    ax.set_xlabel("mean relative calibration output error"); ax.set_ylabel("WikiText-2 mean NLL (nats/token)")
+    ax.set_title(f"Calibration error vs held-out NLL: Spearman $\\rho$={rho.correlation:.2f} (n={len(cs)})", fontsize=9)
+    fig.tight_layout(); fig.savefig(OUT / "fig_calib_vs_heldout.pdf"); fig.savefig(OUT / "fig_calib_vs_heldout.png", dpi=150)
+    plt.close(fig)
     return dict(spearman=float(rho.correlation), p=float(rho.pvalue), conditions=cs)
 
 
