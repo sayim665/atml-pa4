@@ -66,5 +66,5 @@ and budget (`python -m task2.kv --stage selections`, commit 142b043). Outcomes m
 * The highest-scoring contiguous run in most cases is the chat template's default system prompt, which acts as an
   attention sink beyond the 8 fixed sink tokens.
 * The hybrid keeps about half as many FP16 positions (367-729) as question-aware eviction (766-1,482), because the
-  INT2 remainder uses part of the budget. It still retains the gold evidence in 5 of 6 cases (8 of 9 evidence tokens
+  INT2 remainder uses part of the budget. It still retains the gold evidence in 5 of 6 cases (24 of 27 evidence tokens
   in the sixth) and roughly half or more of the distractors.
